@@ -40,9 +40,11 @@ public class Engine extends StateBasedGame{
 		gc.setVSync(true);
 		new Resources();
 		
-		ClassesInstances.GameState=new States.GameState();
-		
-		this.addState(ClassesInstances.GameState);
+		ClassesInstances.gameState=new States.GameState();
+		ClassesInstances.workerStatState=new States.WorkerStatState();
+			
+		this.addState(ClassesInstances.gameState);
+		this.addState(ClassesInstances.workerStatState);
 
 		
 		

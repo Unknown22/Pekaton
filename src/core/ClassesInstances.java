@@ -5,8 +5,8 @@ import States.WorkerStatState;
 
 public class ClassesInstances {
 
-	public static GameState GameState;
-	public static WorkerStatState WorkerStatState;
+	public static GameState gameState;
+	public static WorkerStatState workerStatState;
 
 	
 }
