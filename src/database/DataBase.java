@@ -91,5 +91,15 @@ public class DataBase {
 		return id;
 		  
 	}
+	
+	public void setZadanieStatusById(int id, int status){
+		
+		try{
+			Statement s=connection.createStatement();  
+			ResultSet rs = s.executeQuery("UPDATE `zadanie` SET `status`='"+status+"' WHERE `id`='"+id+"';");
+		} catch(SQLException e){
+			
+		}	
+	}
 
 }
