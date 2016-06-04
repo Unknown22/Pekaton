@@ -23,7 +23,7 @@ public class Engine extends StateBasedGame{
 		if(f.exists())System.setProperty("org.lwjgl.librarypath", f.getAbsolutePath());
 		try {
 			AppGameContainer app=new AppGameContainer(new Engine());
-			app.setDisplayMode(Window.height, Window.width, false);
+			app.setDisplayMode(Window.width, Window.height,  false);
 			app.start();
 			
 		} catch (SlickException e) {
