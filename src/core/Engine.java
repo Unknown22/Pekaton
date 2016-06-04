@@ -25,6 +25,7 @@ public class Engine extends StateBasedGame{
 			AppGameContainer app=new AppGameContainer(new Engine());
 			app.setDisplayMode(Window.height, Window.width, false);
 			app.start();
+			
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,8 +33,15 @@ public class Engine extends StateBasedGame{
 	}
 
 	@Override
-	public void initStatesList(GameContainer arg0) throws SlickException {
+	public void initStatesList(GameContainer gc) throws SlickException {
 		// TODO Auto-generated method stub
+		gc.setAlwaysRender(true);
+		gc.setTargetFrameRate(60);
+		gc.setVSync(true);
+		new Resources();
+			
+
+		
 		
 	}
 }
