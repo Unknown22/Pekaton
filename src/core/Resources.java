@@ -33,7 +33,8 @@ public class Resources {
 		
 		try {
 
-			spritesheets.put("dead", new SpriteSheet(loadImage("/dead.png"), 32, 32 ));
+			//spritesheets.put("dead", new SpriteSheet(loadImage("/dead.png"), 32, 32 ));
+			spritesheets.put("worker", new SpriteSheet(loadImage("data/img/worker.png"), 15, 40 ));
 			
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
