@@ -24,7 +24,7 @@ import org.newdawn.slick.geom.Shape;
 public class GameState extends BasicGameState {
 	
 	Shape player= new Rectangle(Worker.x, Worker.y, 32, 32);
-	TiledMap mapa;
+	TiledMap mapa=Resources.getMap("mapa");
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
