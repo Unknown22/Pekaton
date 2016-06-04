@@ -41,12 +41,12 @@ public class LoginState extends BasicGameState {
 		font.addNeheGlyphs();
 		font.loadGlyphs();
 		
-		login=new TextField(gc, gc.getDefaultFont(), 150, 120, 450, 20, new ComponentListener() {
+		login=new TextField(gc, gc.getDefaultFont(), 150, 170, 450, 20, new ComponentListener() {
 			public void componentActivated(AbstractComponent source) {
 			}
 			});
 		
-		password=new TextField(gc, gc.getDefaultFont(), 150, 190, 450, 20, new ComponentListener() {
+		password=new TextField(gc, gc.getDefaultFont(), 150, 240, 450, 20, new ComponentListener() {
 			public void componentActivated(AbstractComponent source) {
 			}
 			});
@@ -57,19 +57,19 @@ public class LoginState extends BasicGameState {
 		// TODO Auto-generated method stub
 		if(isAlreadyLogged==false)
 		{
-			g.drawImage(Resources.getSpritesheet("monitor").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
+			g.drawImage(Resources.getSpritesheet("monitor_login").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 			g.setFont(font);
-			g.setColor(Color.blue);
-			g.drawString("Zaloguj siê", Window.width/2-margin, 50);
-			g.drawString("Login:", 150, 80);
+			g.setColor(Color.black);
+			g.drawString("Zaloguj siê", Window.width/2-margin, 100);
+			g.drawString("Login:", 150, 130);
 			
 			g.setColor(Color.black);
 			login.setInput(gc.getInput());
 			g.setColor(Color.white);
 			login.render(gc, g);
 			
-			g.setColor(Color.blue);
-			g.drawString("Haslo:", 150, 150);
+			g.setColor(Color.black);
+			g.drawString("Haslo:", 150, 200);
 			
 			g.setColor(Color.black);
 			password.setInput(gc.getInput());
@@ -78,10 +78,10 @@ public class LoginState extends BasicGameState {
 		}
 		else
 		{
-			g.drawImage(Resources.getSpritesheet("monitor").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
+			g.drawImage(Resources.getSpritesheet("monitor_window").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 			g.setFont(font);
-			g.setColor(Color.blue);
-			g.drawString("Zalogowano pomyœlnie", Window.width/2-margin*2, Window.height/2);
+			g.setColor(Color.black);
+			g.drawString("Zalogowano pomyœlnie", Window.width/2-margin*4, Window.height/2);
 		}
 		
 		
@@ -113,18 +113,27 @@ public class LoginState extends BasicGameState {
 		     }
 		 }
 		 
-		 if ((xpos > 0 && xpos < 800) && (ypos > 160 && ypos < 640)) {//tu zmienic na przycisk
+		 if ((xpos > 340 && xpos < 462) && (ypos > 322 && ypos < 354)) {//tu zmienic na przycisk
 
-		     String log=login.getText();
-		     String pass=password.getText();
-		     int id=db.getIdBy(log, pass);
-		     if(id>=0)
-		     {
-		    	 Worker.id=id;
-		    	 isAlreadyLogged=true;
-		     }
-		    	 
+			 if (gc.getInput().isMousePressed(0)) {
+				 String log=login.getText();
+			     String pass=password.getText();
+			     int id=db.getIdBy(log, pass);
+			     if(id>=0)
+			     {
+			    	 Worker.id=id;
+			    	 isAlreadyLogged=true;
+			     }
+			 } 
 		 }
+		 
+		 if ((xpos > 739 && xpos < 739+18) && (ypos > 40 && ypos < 40+20)) {
+
+			 if (gc.getInput().isMousePressed(0)) {
+				 sbg.enterState(StatesCodes.GAMESTATE);
+			 }
+			 
+		  }
 		 
 		 
 	}

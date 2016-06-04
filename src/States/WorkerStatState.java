@@ -56,48 +56,47 @@ public class WorkerStatState extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		
-		g.drawImage(Resources.getSpritesheet("monitor").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
+		g.drawImage(Resources.getSpritesheet("monitor_window").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 		
 		g.setFont(font);
 		g.setColor(Color.blue);
-		g.drawString(pracownik.getLogin(), Window.width/2-margin, 50);
+		g.drawString(pracownik.getLogin(), Window.width/2-margin, 100);
 		g.setColor(Color.black);
-		g.drawString("ID", margin+cellMargin, 100);
-		g.drawString("Stanowisko", margin+cellMargin+cellWidth, 100);
-		g.drawString("Doœwiadczenie", margin+cellMargin+cellWidth*2, 100);
+		g.drawString("ID", margin+cellMargin, 150);
+		g.drawString("Stanowisko", margin+cellMargin+cellWidth, 150);
+		g.drawString("Doœwiadczenie", margin+cellMargin+cellWidth*2, 150);
 		
 		g.setColor(Color.darkGray);
-		g.drawString(Integer.toString(pracownik.getId()), margin+cellMargin, 150);
-		g.drawString(pracownik.getStanowisko(), margin+cellMargin+cellWidth, 150);
-		g.drawString(Integer.toString(pracownik.getExp()), margin+cellMargin+cellWidth*2, 150);
+		g.drawString(Integer.toString(pracownik.getId()), margin+cellMargin, 200);
+		g.drawString(pracownik.getStanowisko(), margin+cellMargin+cellWidth, 200);
+		g.drawString(Integer.toString(pracownik.getExp()), margin+cellMargin+cellWidth*2, 200);
 		
 		g.setColor(Color.blue);
-		g.drawString("Zadania", Window.width/2-margin, 200);
+		g.drawString("Zadania", Window.width/2-margin, 250);
 		
 		
 		g.setColor(new Color(0x1E1B68));
 		if(zadania.isEmpty()==false)
 		{
-			g.drawString(zadania.get(i).getOpis(), margin+cellMargin, 250);
+			g.drawString(zadania.get(i).getOpis(), margin+cellMargin, 300);
 			g.setColor(Color.darkGray);
 			g.drawString(Integer.toString(zadania.get(i).getDoswiadczenie()), margin+cellMargin, 275);
-			g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 300);
+			g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 350);
 			if(zadania.get(i).getStatus()==0)
 			{
 				g.setColor(Color.red);
-				g.drawString("Niewykonane", margin+cellMargin, 325);
+				g.drawString("Niewykonane", margin+cellMargin, 375);
 			}
 				
 			else
 			{
 				g.setColor(new Color(0x12902B));
-				g.drawString("Wykonane", margin+cellMargin, 325);
+				g.drawString("Wykonane", margin+cellMargin, 375);
 			}
 		}
 		else
 		{
-			g.drawString("Brak zadañ", margin+cellMargin, 250);
+			g.drawString("Brak zadañ", margin+cellMargin, 300);
 		}
 		
 				
@@ -136,6 +135,17 @@ public class WorkerStatState extends BasicGameState {
 				i--;
 				
 		}
+		
+		int xpos = gc.getInput().getAbsoluteMouseX();
+		int ypos = gc.getInput().getAbsoluteMouseY();
+		
+		if ((xpos > 739 && xpos < 739+18) && (ypos > 40 && ypos < 40+20)) {
+
+			 if (gc.getInput().isMousePressed(0)) {
+				 sbg.enterState(StatesCodes.GAMESTATE);
+			 }
+			 
+		  }
 	}
 
 	@Override
