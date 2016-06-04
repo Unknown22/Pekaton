@@ -45,6 +45,7 @@ public class Engine extends StateBasedGame{
 			
 		this.addState(ClassesInstances.gameState);
 		this.addState(ClassesInstances.workerStatState);
+		this.addState(ClassesInstances.loginState);
 
 		
 		
