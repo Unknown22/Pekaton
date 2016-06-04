@@ -27,7 +27,14 @@ public class DBExample {
 			System.out.println(zadania.get(0).getOpis());
 		}
 		
-		System.out.println(db.getIdBy("Nadia Romanov", "nd"));
+		db.setZadanieStatusById(13, 1);
+		
+		List<Sprint> sprinty = new ArrayList<Sprint>();
+		
+		sprinty = db.getAllSprints();
+		
+		System.out.println(sprinty.get(0).getPoczatek());
+		System.out.println(sprinty.get(0).getKoniec());
 		
 		db.setZadanieStatusById(13, 1);
 		
