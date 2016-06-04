@@ -50,26 +50,27 @@ public class GameState extends BasicGameState {
 		player.setLocation(Worker.x, Worker.y);
 		
 		if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
-			if (!Collision.isCollision(Worker.x, Worker.y-1, mapa)){
+
+			if (!Collision.isCollision(Worker.x/32, Worker.y/32-1, mapa)){
 				Worker.y--;
 			}	
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-			if (!Collision.isCollision(Worker.x+1, Worker.y, mapa)){
+			if (!Collision.isCollision(Worker.x/32+1, Worker.y/32, mapa)){
 				Worker.x++;
 			}
 		}
 		
 		
 		if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-			if (!Collision.isCollision(Worker.x, Worker.y+1, mapa)){
+			if (!Collision.isCollision(Worker.x/32, (Worker.y/32)+1, mapa)){
 				Worker.y++;
 			}
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-			if (!Collision.isCollision(Worker.x-1, Worker.y, mapa)){
+			if (!Collision.isCollision(Worker.x/32-1, Worker.y/32, mapa)){
 				Worker.x--;
 			}
 		}
