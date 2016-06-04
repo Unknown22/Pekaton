@@ -13,11 +13,10 @@ public class WorkerStatState extends BasicGameState {
 
 	DataBase db = new DataBase();
 	
-	Pracownik pracownik;
+	Pracownik pracownik=db.getPracownikByID(1);;
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		pracownik = db.getPracownikByID(1);
 	}
 
 	@Override
@@ -36,7 +35,7 @@ public class WorkerStatState extends BasicGameState {
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 0;
+		return StatesCodes.WORKERSTATE;
 	}
 
 }

@@ -20,12 +20,11 @@ import org.newdawn.slick.geom.Shape;
 
 public class GameState extends BasicGameState {
 	
-	protected Shape player;
+	Shape player= new Rectangle(Worker.x, Worker.y, 32, 32);;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		player = new Rectangle(Worker.x, Worker.y, 32, 32);
 	}
 
 	@Override
@@ -81,7 +80,7 @@ public class GameState extends BasicGameState {
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return 0;
+		return StatesCodes.GAMESTATE;
 	}
 	
 	protected void drawDebugLines(Graphics g, int i) {
