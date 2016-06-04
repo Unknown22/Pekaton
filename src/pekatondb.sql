@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Cze 2016, 10:51
+-- Czas generowania: 04 Cze 2016, 12:47
 -- Wersja serwera: 10.1.8-MariaDB
 -- Wersja PHP: 5.6.14
 
@@ -58,7 +58,15 @@ CREATE TABLE `pracownik` (
 --
 
 INSERT INTO `pracownik` (`id`, `login`, `haslo`, `stanowisko`, `doswiadczenie`) VALUES
-(1, 'Nadia Romanov', 'nadia', 'Testowe', 0);
+(1, 'Nadia Romanov', 'nadia', 'Testowe', 0),
+(2, 'YasiuEDITEDIT', 'yasiu', 'Java Full Stack Developer with A lot of MoneyEDIT', 99),
+(3, 'Mateosz', 'mateosz', 'tester', 98),
+(4, 'Mateosz', 'mateosz', 'tester', 98),
+(6, 'Mateosz', 'mateosz', 'tester', 98),
+(7, 'Mateosz', 'mateosz', 'tester', 98),
+(8, 'Mateosz', 'mateosz', 'tester', 98),
+(9, 'Mateosz', 'mateosz', 'tester', 98),
+(10, 'Mateosz', 'mateosz', 'tester', 98);
 
 -- --------------------------------------------------------
 
@@ -71,18 +79,19 @@ CREATE TABLE `zadanie` (
   `opis` varchar(255) NOT NULL,
   `doswiadczenie` int(11) NOT NULL,
   `zleceniodawca` varchar(50) NOT NULL,
-  `id_pracownika` int(11) DEFAULT NULL
+  `id_pracownika` int(11) DEFAULT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `zadanie`
 --
 
-INSERT INTO `zadanie` (`id`, `opis`, `doswiadczenie`, `zleceniodawca`, `id_pracownika`) VALUES
-(1, 'Pierwsze zadanie testowe. Idz do kuchni i zrob mi kanapke!', 2, 'Mateusz', 1);
+INSERT INTO `zadanie` (`id`, `opis`, `doswiadczenie`, `zleceniodawca`, `id_pracownika`, `status`) VALUES
+(1, 'Pierwsze zadanie testowe. Idz do kuchni i zrob mi kanapke!', 2, 'Mateusz', 1, 0);
 
 --
--- Indeksy dla zrzutÃ³w tabel
+-- Indeksy dla zrzutów tabel
 --
 
 --
@@ -117,14 +126,14 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT dla tabeli `pracownik`
 --
 ALTER TABLE `pracownik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT dla tabeli `zadanie`
 --
 ALTER TABLE `zadanie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Ograniczenia dla zrzutÃ³w tabel
+-- Ograniczenia dla zrzutów tabel
 --
 
 --

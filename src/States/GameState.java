@@ -6,12 +6,15 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.tiled.TiledMap;
 
 import GameElements.Worker;
 
 import org.newdawn.slick.Input;
 
+import core.Collision;
 import core.Engine;
+import core.Interaction;
 import core.Resources;
 import core.Window;
 
@@ -20,7 +23,8 @@ import org.newdawn.slick.geom.Shape;
 
 public class GameState extends BasicGameState {
 	
-	Shape player= new Rectangle(Worker.x, Worker.y, 32, 32);;
+	Shape player= new Rectangle(Worker.x, Worker.y, 32, 32);
+	TiledMap mapa;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -46,28 +50,33 @@ public class GameState extends BasicGameState {
 		player.setLocation(Worker.x, Worker.y);
 		
 		if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
-			Worker.y--;
-			
+			if (!Collision.isCollision(Worker.x, Worker.y-1, mapa)){
+				Worker.y--;
+			}	
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-			Worker.x++;
-		
+			if (!Collision.isCollision(Worker.x+1, Worker.y, mapa)){
+				Worker.x++;
+			}
 		}
 		
 		
 		if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-			Worker.y++;
-			
+			if (!Collision.isCollision(Worker.x, Worker.y+1, mapa)){
+				Worker.y++;
+			}
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-			Worker.x--;
-			
+			if (!Collision.isCollision(Worker.x-1, Worker.y, mapa)){
+				Worker.x--;
+			}
 		}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
-			
+			int interaction_id = Interaction.isInteraction(Worker.x, Worker.y, mapa);
+			System.out.println(interaction_id);
 		}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_L)){
