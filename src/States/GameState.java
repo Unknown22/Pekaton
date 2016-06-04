@@ -11,7 +11,9 @@ import GameElements.Worker;
 
 import org.newdawn.slick.Input;
 
+import core.Collision;
 import core.Engine;
+import core.Interaction;
 import core.Resources;
 import core.Window;
 
@@ -46,28 +48,33 @@ public class GameState extends BasicGameState {
 		player.setLocation(Worker.x, Worker.y);
 		
 		if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
-			Worker.y--;
-			
+			if (!Collision.isCollision(Worker.x, Worker.y-1)){
+				Worker.y--;
+			}	
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-			Worker.x++;
-		
+			if (!Collision.isCollision(Worker.x+1, Worker.y)){
+				Worker.x++;
+			}
 		}
 		
 		
 		if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-			Worker.y++;
-			
+			if (!Collision.isCollision(Worker.x, Worker.y+1)){
+				Worker.y++;
+			}
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-			Worker.x--;
-			
+			if (!Collision.isCollision(Worker.x-1, Worker.y)){
+				Worker.x--;
+			}
 		}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
-			
+			int interaction_id = Interaction.isInteraction(Worker.x, Worker.y);
+			System.out.println(interaction_id);
 		}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_L)){
