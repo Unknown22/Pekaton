@@ -100,10 +100,32 @@ public class DataBase {
 		
 		try{
 			Statement s=connection.createStatement();  
-			ResultSet rs = s.executeQuery("UPDATE `zadanie` SET `status`='"+status+"' WHERE `id`='"+id+"';");
+			s.executeUpdate("UPDATE `zadanie` SET `status`='"+status+"' WHERE `id`='"+id+"';");
 		} catch(SQLException e){
-			
+			e.printStackTrace();
+			System.out.println("Blad przy zmianie statusu");
 		}	
+	}
+	
+	public List<Sprint> getAllSprints(){
+		List<Sprint> sprinty = new ArrayList<Sprint>();
+		
+		try{
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM sprint;");
+			
+			while (rs.next()) {
+				Sprint sprint = new Sprint (rs.getInt("id"),
+											rs.getString("poczatek"),
+											rs.getString("koniec"));
+				sprinty.add(sprint);
+			}
+			
+		} catch (SQLException e){
+			System.out.println("Blad przy pobieraniu listy sprintow");
+		}
+		
+		return sprinty;
 	}
 
 }
