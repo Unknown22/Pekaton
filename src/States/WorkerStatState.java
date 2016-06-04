@@ -74,7 +74,7 @@ public class WorkerStatState extends BasicGameState {
 		g.drawString(Integer.toString(pracownik.getExp()), margin+cellMargin+cellWidth*2, 200);
 		
 		g.setColor(Color.blue);
-		g.drawString("Zadania", Window.width/2-margin, 250);
+		g.drawString("Zadania ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
 		
 		
 		g.setColor(new Color(0x1E1B68));
