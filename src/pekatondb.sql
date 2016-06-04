@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Cze 2016, 17:28
+-- Czas generowania: 04 Cze 2016, 22:45
 -- Wersja serwera: 10.1.10-MariaDB
 -- Wersja PHP: 5.6.19
 
@@ -67,7 +67,20 @@ INSERT INTO `pracownik` (`id`, `login`, `haslo`, `stanowisko`, `doswiadczenie`, 
 (7, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
 (8, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
 (9, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(10, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58');
+(10, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(11, 'a', 'a', 'a', 34, '2016-06-04 19:51:00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `sprint`
+--
+
+CREATE TABLE `sprint` (
+  `id` int(11) NOT NULL,
+  `poczatek` date DEFAULT NULL,
+  `koniec` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -77,32 +90,32 @@ INSERT INTO `pracownik` (`id`, `login`, `haslo`, `stanowisko`, `doswiadczenie`, 
 
 CREATE TABLE `zadanie` (
   `id` int(11) NOT NULL,
-  `opis` varchar(255) NOT NULL,
+  `opis` varchar(255) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `doswiadczenie` int(11) NOT NULL,
   `zleceniodawca` varchar(50) NOT NULL,
   `id_pracownika` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
-  `data_utworzenia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `data_zakończenia` timestamp NULL DEFAULT NULL
+  `id_sprint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `zadanie`
 --
 
-INSERT INTO `zadanie` (`id`, `opis`, `doswiadczenie`, `zleceniodawca`, `id_pracownika`, `status`, `data_utworzenia`, `data_zakończenia`) VALUES
-(1, 'Pierwsze zadanie testowe. Idz do kuchni i zrob mi kanapke!', 2, 'Mateusz', 1, 0, '2016-06-04 15:26:49', NULL),
-(3, '123', 123, '113', 3, 0, '2016-06-04 15:26:49', NULL),
-(4, '23123123', 69, 'Matius', 4, 1, '2016-06-04 15:26:49', NULL),
-(5, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, '2016-06-04 15:26:49', NULL),
-(12, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, '2016-06-04 15:26:49', NULL),
-(13, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, '2016-06-04 15:26:49', NULL),
-(14, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, '2016-06-04 15:26:49', NULL),
-(15, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, '2016-06-04 15:26:49', NULL),
-(16, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, '2016-06-04 15:26:49', NULL),
-(17, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, '2016-06-04 15:26:49', NULL),
-(18, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, '2016-06-04 15:26:49', NULL),
-(19, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, '2016-06-04 15:26:49', NULL);
+INSERT INTO `zadanie` (`id`, `opis`, `doswiadczenie`, `zleceniodawca`, `id_pracownika`, `status`, `id_sprint`) VALUES
+(1, 'Pierwsze zadanie testowe. Idz do kuchni i zrob mi kanapke!', 2, 'Mateusz', 1, 0, NULL),
+(3, 'Kodować żółć gęś', 123, '113', 1, 1, NULL),
+(4, '23123123', 69, 'Matius', 4, 1, NULL),
+(5, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(12, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, NULL),
+(13, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(14, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, NULL),
+(15, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(16, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(17, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(18, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(19, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(20, 'bfdbfbd', 65, 'Dominik', 11, 0, NULL);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -118,6 +131,12 @@ ALTER TABLE `admin`
 -- Indexes for table `pracownik`
 --
 ALTER TABLE `pracownik`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sprint`
+--
+ALTER TABLE `sprint`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -140,12 +159,17 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT dla tabeli `pracownik`
 --
 ALTER TABLE `pracownik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT dla tabeli `sprint`
+--
+ALTER TABLE `sprint`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `zadanie`
 --
 ALTER TABLE `zadanie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- Ograniczenia dla zrzutów tabel
 --

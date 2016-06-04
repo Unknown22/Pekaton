@@ -24,17 +24,20 @@ import model.Pracownik;
 import model.Zadanie;
 import database.DataBase;
 
+
 public class WorkerStatState extends BasicGameState {
 
 	DataBase db = new DataBase();
 	int margin=40;
 	int cellMargin=10;
-	Pracownik pracownik=db.getPracownikByID(1);
-	ArrayList<Zadanie> zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(1);
+	Pracownik pracownik;
+	ArrayList<Zadanie> zadania;
 	int cellWidth=(Window.width-margin*2)/3;
 	int cellWidth2=(Window.width-margin*2)/4;
 	UnicodeFont font = new UnicodeFont(new Font("Minecraftia", Font.PLAIN, 20));
 	int i=0;
+	
+	int id=-1;
 	
 	
 	
@@ -47,6 +50,7 @@ public class WorkerStatState extends BasicGameState {
 											// to ona dodaje polskie znaki
 		font.addNeheGlyphs();
 		font.loadGlyphs();
+		
 	}
 
 	@Override
@@ -73,21 +77,29 @@ public class WorkerStatState extends BasicGameState {
 		
 		
 		g.setColor(new Color(0x1E1B68));
-		g.drawString(zadania.get(i).getOpis(), margin+cellMargin, 250);
-		g.setColor(Color.darkGray);
-		g.drawString(Integer.toString(zadania.get(i).getDoswiadczenie()), margin+cellMargin, 275);
-		g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 300);
-		if(zadania.get(i).getStatus()==0)
+		if(zadania.isEmpty()==false)
 		{
-			g.setColor(Color.red);
-			g.drawString("Niewykonane", margin+cellMargin, 325);
+			g.drawString(zadania.get(i).getOpis(), margin+cellMargin, 250);
+			g.setColor(Color.darkGray);
+			g.drawString(Integer.toString(zadania.get(i).getDoswiadczenie()), margin+cellMargin, 275);
+			g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 300);
+			if(zadania.get(i).getStatus()==0)
+			{
+				g.setColor(Color.red);
+				g.drawString("Niewykonane", margin+cellMargin, 325);
+			}
+				
+			else
+			{
+				g.setColor(new Color(0x12902B));
+				g.drawString("Wykonane", margin+cellMargin, 325);
+			}
 		}
-			
 		else
 		{
-			g.setColor(new Color(0x12902B));
-			g.drawString("Wykonane", margin+cellMargin, 325);
+			g.drawString("Brak zadañ", margin+cellMargin, 250);
 		}
+		
 				
 
 		
@@ -97,6 +109,18 @@ public class WorkerStatState extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
+		
+		if(Worker.id>=0 && id!=Worker.id)
+		{
+			id=Worker.id;
+			System.out.println("Id:"+id);
+			pracownik=db.getPracownikByID(id);
+			zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
+		}
+			
+		
+		
+		
 		if(gc.getInput().isKeyPressed(Input.KEY_L) || gc.getInput().isKeyPressed(Input.KEY_ESCAPE)){
 			sbg.enterState(StatesCodes.GAMESTATE);
 		}

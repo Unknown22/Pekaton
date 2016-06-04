@@ -88,7 +88,6 @@ public class DataBase {
 			e.printStackTrace();
 		}  
 		
-		System.out.println("LoginDao: id: " + id);
 		return id;
 		  
 	}
