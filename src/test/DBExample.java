@@ -38,6 +38,14 @@ public class DBExample {
 		
 		db.setZadanieStatusById(13, 1);
 		
+		zadania = db.getAllZadanieBySprintId(1);
+		
+		for (int x = 0; x < zadania.size(); x++){
+			System.out.println(zadania.get(x));
+			System.out.println(zadania.get(0).getOpis());
+		}
+		
+		
 	}
 
 }
