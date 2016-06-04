@@ -29,7 +29,7 @@ public class LoginState extends BasicGameState {
 	TextField password;
 	int margin=40;
 	DataBase db = new DataBase();
-	boolean isAlreadyLogged=false;
+	int isAlreadyLogged=0;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -55,7 +55,7 @@ public class LoginState extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		if(isAlreadyLogged==false)
+		if(isAlreadyLogged==0 ||isAlreadyLogged==2)
 		{
 			g.drawImage(Resources.getSpritesheet("monitor_login").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 			g.setFont(font);
@@ -75,6 +75,13 @@ public class LoginState extends BasicGameState {
 			password.setInput(gc.getInput());
 			g.setColor(Color.white);
 			password.render(gc, g);
+			
+			if(isAlreadyLogged==2)
+			{
+				g.setFont(font);
+				g.setColor(Color.black);
+				g.drawString("Niepoprawny login lub haslo", Window.width/2-margin*4, 280);
+			}
 		}
 		else
 		{
@@ -122,7 +129,11 @@ public class LoginState extends BasicGameState {
 			     if(id>=0)
 			     {
 			    	 Worker.id=id;
-			    	 isAlreadyLogged=true;
+			    	 isAlreadyLogged=1;
+			     }
+			     else
+			     {
+			    	 isAlreadyLogged=2;
 			     }
 			 } 
 		 }
