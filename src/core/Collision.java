@@ -8,6 +8,7 @@ public class Collision {
 		
 		int kolizje = mapa.getLayerIndex("collisions");
 		System.out.println(kolizje);
+		System.out.println(x);
 		if (mapa.getTileId(x, y, kolizje) == 0){
 			return false;
 		}
