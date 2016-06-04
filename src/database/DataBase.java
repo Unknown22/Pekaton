@@ -60,7 +60,8 @@ public class DataBase {
 												rs.getInt("doswiadczenie"),
 												rs.getString("zleceniodawca"),
 												rs.getInt("id_pracownika"),
-												rs.getInt("status"));
+												rs.getInt("status"),
+												rs.getInt("id_sprint"));
 				zadania.add(zadanie);
 			}
 			
@@ -91,16 +92,13 @@ public class DataBase {
 		return id;
 	}
 	
-	public void setTaskStatusToVerify(int id)
-	{
-		
-	}
-	
 	public void setZadanieStatusById(int id, int status){
 		
 		try{
 			Statement s=connection.createStatement();  
+
 			s.executeUpdate("UPDATE `zadanie` SET `status`='"+status+"' WHERE `id`='"+id+"';");
+
 		} catch(SQLException e){
 			e.printStackTrace();
 			System.out.println("Blad przy zmianie statusu");

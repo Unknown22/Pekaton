@@ -36,6 +36,8 @@ public class DBExample {
 		System.out.println(sprinty.get(0).getPoczatek());
 		System.out.println(sprinty.get(0).getKoniec());
 		
+		db.setZadanieStatusById(13, 1);
+		
 	}
 
 }
