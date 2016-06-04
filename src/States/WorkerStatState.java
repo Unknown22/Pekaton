@@ -35,7 +35,7 @@ public class WorkerStatState extends BasicGameState {
 	int cellWidth=(Window.width-margin*2)/3;
 	int cellWidth2=(Window.width-margin*2)/4;
 	UnicodeFont font = new UnicodeFont(new Font("Minecraftia", Font.PLAIN, 20));
-	int i=0;
+	int i=0; //nr zadania
 	int id=-1;
 	
 	int statusActualTask=0;
@@ -89,12 +89,14 @@ public class WorkerStatState extends BasicGameState {
 				g.setColor(Color.red);
 				g.drawString("Niewykonane", margin+cellMargin, 375);
 				statusActualTask=0;
+				g.drawImage(Resources.getSpritesheet("doweryfikacji").getSubImage(0, 0, 120, 32), margin+cellMargin+350, 375 );
 			}
 			else if(zadania.get(i).getStatus()==1)
 			{
 				g.setColor(new Color(0x184991));
 				g.drawString("Do weryfikacji", margin+cellMargin, 375);
 				statusActualTask=1;
+				g.drawImage(Resources.getSpritesheet("popraw").getSubImage(0, 0, 120, 32), margin+cellMargin+350, 375 );
 			}
 			else if(zadania.get(i).getStatus()==2)
 			{
@@ -153,8 +155,22 @@ public class WorkerStatState extends BasicGameState {
 			 if (gc.getInput().isMousePressed(0)) {
 				 sbg.enterState(StatesCodes.GAMESTATE);
 			 }
-			 
-		  }
+		}
+		if ((xpos > 400 && xpos < 400+120) && (ypos > 375 && ypos < 375+34)) {
+
+			 if (gc.getInput().isMousePressed(0)) {
+				 if(statusActualTask==0)
+				 {
+					 db.setZadanieStatusById(zadania.get(i).getId(), 1);
+					 zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
+				 }
+				 else if(statusActualTask==1)
+				 {
+					 db.setZadanieStatusById(zadania.get(i).getId(), 0);
+					 zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
+				 }
+			 }
+		}
 	}
 
 	@Override

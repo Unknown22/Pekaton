@@ -29,6 +29,8 @@ public class DBExample {
 		
 		System.out.println(db.getIdBy("Nadia Romanov", "nd"));
 		
+		db.setZadanieStatusById(13, 1);
+		
 	}
 
 }
