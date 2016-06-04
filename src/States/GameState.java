@@ -39,7 +39,7 @@ public class GameState extends BasicGameState {
 		drawDebugLines(g, 32);
 		g.setColor(Color.cyan);
 		g.draw(player);
-		mapa.render(0, 0);
+		
 		g.drawImage(Resources.getSpritesheet("worker").getSubImage(0, 0, 15, 40), Worker.x, Worker.y);
 	}
 
@@ -50,7 +50,7 @@ public class GameState extends BasicGameState {
 		player.setLocation(Worker.x, Worker.y);
 		
 		if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
-			if (!Collision.isCollision((Worker.x)/32, (Worker.y-1)/32, mapa)){
+			if (!Collision.isCollision(Worker.x, Worker.y-1, mapa)){
 				Worker.y--;
 			}	
 		}
