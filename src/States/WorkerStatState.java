@@ -36,8 +36,9 @@ public class WorkerStatState extends BasicGameState {
 	int cellWidth2=(Window.width-margin*2)/4;
 	UnicodeFont font = new UnicodeFont(new Font("Minecraftia", Font.PLAIN, 20));
 	int i=0;
-	
 	int id=-1;
+	
+	int statusActualTask=0;
 	
 	
 	
@@ -87,16 +88,19 @@ public class WorkerStatState extends BasicGameState {
 			{
 				g.setColor(Color.red);
 				g.drawString("Niewykonane", margin+cellMargin, 375);
+				statusActualTask=0;
 			}
 			else if(zadania.get(i).getStatus()==1)
 			{
 				g.setColor(new Color(0x12902B));
 				g.drawString("Do weryfikacji", margin+cellMargin, 375);
+				statusActualTask=1;
 			}
 			else if(zadania.get(i).getStatus()==2)
 			{
 				g.setColor(new Color(0x12902B));
 				g.drawString("Wykonane", margin+cellMargin, 375);
+				statusActualTask=2;
 			}
 		}
 		else
