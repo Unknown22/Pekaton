@@ -13,7 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Engine extends StateBasedGame{
 
 	public Engine() {
-		super("Creepy Squirells");
+		super("Nadia Romanov");
 		// TODO Auto-generated constructor stub
 	}
 	
