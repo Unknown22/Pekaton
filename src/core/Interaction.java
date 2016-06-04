@@ -6,13 +6,13 @@ public class Interaction {
 
 	public static int isInteraction(int x, int y, TiledMap mapa){
 
-			int komputer = mapa.getLayerIndex("interaction1");
-			int zadania = mapa.getLayerIndex("interaction2");
+			int interaction1 = mapa.getLayerIndex("interaction1");
+			int interaction2 = mapa.getLayerIndex("interaction2");
 			
-			if (mapa.getTileId(x, y, komputer) != 0){
+			if (checkInteraction(x, y, mapa, interaction1) != 0){
 				return 1;
 			}
-			else if(mapa.getTileId(x, y, zadania) != 0){
+			else if(checkInteraction(x, y, mapa, interaction2) != 0){
 				return 2;
 			}
 			else{
@@ -20,13 +20,16 @@ public class Interaction {
 			}
 	}
 	
-	public int checkInteraction(int x, int y, TiledMap mapa, int interakcja){
-		interakcja = 0;
+	public static int checkInteraction(int x, int y, TiledMap mapa, int interakcja){
+		int inter = 0;
 		
-		if(mapa.getTileId((x+1)/32, y, interakcja) != 0){
-			
+		if(mapa.getTileId(x+1, y, interakcja) != 0 ||
+				mapa.getTileId(x-1, y, interakcja) != 0 ||
+				mapa.getTileId(x, y+1, interakcja) != 0 ||
+				mapa.getTileId(x, y-1, interakcja) != 0){
+			inter = 1;
 		}
 		
-		return interakcja;
+		return inter;
 	}
 }
