@@ -4,8 +4,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.PreparedStatement;
-
 import model.*;
 
 import java.sql.ResultSet;
@@ -68,29 +66,6 @@ public class DataBase {
 			System.out.println("Blad przy pobieraniu zadan dla pracownika o id: " + id);
 		}
 		return zadania;
-	}
-	
-	public int getIdBy(String login, String password){  
-		int id=-1;
-		try{  		              
-		Statement s=connection.createStatement();  
-		ResultSet rs = s.executeQuery("select id from pracownik where login = '" + login + "' and haslo = '" + password + "'");
-		
-		
-		 while(rs.next())
-		 {
-			 id=rs.getInt("id");
-		 }
-
-		              
-		}catch(Exception e){
-			System.out.println("Blad przy logowaniu");
-			e.printStackTrace();
-		}  
-		
-		System.out.println("LoginDao: id: " + id);
-		return id;
-		  
 	}
 
 }

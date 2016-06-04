@@ -27,8 +27,6 @@ public class DBExample {
 			System.out.println(zadania.get(0).getOpis());
 		}
 		
-		System.out.println(db.getIdBy("Nadia Romanov", "nd"));
-		
 	}
 
 }

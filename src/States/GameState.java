@@ -25,7 +25,6 @@ public class GameState extends BasicGameState {
 	
 	Shape player= new Rectangle(Worker.x*32, Worker.y*32, 32, 32);
 	TiledMap mapa=Resources.getMap("mapa");
-	int licznik = 0;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -40,20 +39,14 @@ public class GameState extends BasicGameState {
 		drawDebugLines(g, 32);
 		g.setColor(Color.cyan);
 		g.draw(player);
-		
 		mapa.render(0,0);
-		
 		g.drawImage(Resources.getSpritesheet("worker").getSubImage(0, 0, 15, 40), Worker.x*32, Worker.y*32);
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
-		if (licznik < 10){
-			licznik++;
-		} else {
-			licznik = 0;
-
+		
 		player.setLocation(Worker.x * 32, Worker.y * 32);
 		
 		if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
@@ -84,14 +77,14 @@ public class GameState extends BasicGameState {
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
 			int interaction_id = Interaction.isInteraction(Worker.x, Worker.y, mapa);
-//			System.out.println(interaction_id);
+			System.out.println(interaction_id);
 		}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_L)){
 			sbg.enterState(StatesCodes.WORKERSTATE);
 		}
 		
-		}
+		
 	}
 
 	@Override
