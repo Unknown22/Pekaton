@@ -8,17 +8,23 @@ public class Collision {
 		
 		int kolizje = mapa.getLayerIndex("elements");
 		int kolizje2 = mapa.getLayerIndex("sciany");
+		
+//		System.out.println(kolizje);
+//		System.out.println(kolizje2);
+//		System.out.println(mapa.getTileId(x, y, kolizje));
+//		System.out.println(mapa.getTileId(x, y, kolizje2));
 
 		
-		if (mapa.getTileId(x, y, kolizje) == 0){
-			return false;
+		if (mapa.getTileId(x, y, kolizje) != 0){
+//			System.out.println("Konflikt z elements");
+			return true;
 		}
-		else if( mapa.getTileId(x, y, kolizje2) == 0 )
-		{
-			return false;
+		if(mapa.getTileId(x, y, kolizje2) != 0 ){
+//			System.out.println("Konflikt z sciany");
+			return true;
 		}
 		else{
-			return true;
+			return false;
 		}
 	}
 }
