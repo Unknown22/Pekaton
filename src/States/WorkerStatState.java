@@ -90,7 +90,7 @@ public class WorkerStatState extends BasicGameState {
 			}
 			else if(zadania.get(i).getStatus()==1)
 			{
-				g.setColor(new Color(0x12902B));
+				g.setColor(new Color(0x184991));
 				g.drawString("Do weryfikacji", margin+cellMargin, 375);
 			}
 			else if(zadania.get(i).getStatus()==2)

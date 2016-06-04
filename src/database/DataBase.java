@@ -89,7 +89,11 @@ public class DataBase {
 		}  
 		
 		return id;
-		  
+	}
+	
+	public void setTaskStatusToVerify(int id)
+	{
+		
 	}
 
 }
