@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="open_tileset" tilewidth="32" tileheight="32" tilecount="6840">
+  <image source="open_tileset.png" width="2880" height="2432"/>
+ </tileset>
+ <tileset firstgid="6841" name="open_tileset50" tilewidth="32" tileheight="32" tilecount="1710">
+  <image source="open_tileset50.png" width="1440" height="1216"/>
+ </tileset>
+ <tileset firstgid="8551" name="sii_logo2" tilewidth="32" tileheight="32" tilecount="20">
+  <image source="sii_logo2.png" width="160" height="128"/>
+ </tileset>
+ <layer name="podloga" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+WSXQqAIBCEvYQ+LOT9z1CY18lblMjSYutPakQ0MBg+7NfsKESftiltpcPZK3fMkPqcid94ImOFtL0WuNpAPofqZHhRhv9nx3Ckrmdw4nJQ4Z0bwIh3EjNqcxjgXcpxZ1clBn1DrZ3X5FAMh/ZBVeqBMjlxexvNmCE4loW86dzUznB27L8xbGY+upXB9fwW4yt9jGA8rR10UniZ0AcAAA==
+  </data>
+ </layer>
+ <layer name="sciany" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA82VAQ6CMAxFewg1YRPOot5HvY94P0RFPYJd3JJiSlc2SGjyQ8Lv9oDy4WUAWkEPf/wweqM0VVqAjSDJd56WkerPyejMtIwnM4et5dfuKoA96lCNY3DzWA8wjrj3CXVOYGi9C+5do64zMlL7pmCEmbqc3UmmGn++sL8chnnfSI+1/Zz+r299Tktmlq5WAznkeqgfiq7V3G/u81wKw0R6JF/LyKkYoxn5DU9h0PdGqk64hiXNPJcRsiqpiPRIvvsPfAGxmgxg0AcAAA==
+  </data>
+ </layer>
+ <layer name="sii" width="25" height="20" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3NyQ3AIBAEwU2F6HxjfBuip4NgJR7TUn1nzJRSSvXaEMxGTJixhPYfK5sbInYkh4+DzRMXbjwOHy+bH35kFIePnqur8z5o0AcAAA==
+  </data>
+ </layer>
+ <layer name="elements" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgoAxwKuDHXAoQdQulGRi8gdgdiD2kIfzzQKwrA5H3A9L+MrjteSrLwPBMFrucOdSOc0DzKoC4BIhLpSF8EPCB0tVA82vw2CEkx8AgLIffDlygUhq/PDqIAfolFojjkPxEyA4fEu3oBJrdBcTdJNgB84cDkHYEYicgdgZiFxx2bwOavR2Id5Dhj1wgnQfE+UBcAMSFSHbgi29kOxbicBcx8YErvh8D7X0ii5quqAHuIKU9AaC9gnKEw4qa4CrQ/mtA7Ibkn29A9ndp3OEIAzD52UB6DpLaWWh6mYDhxgzExVjMQw/HBdLY5U8A6ZNIcselyYuDM0A9Z9H0deLJ/9jADRLVk2MHK550TinQB5ptCMRGVLLDm4R40CUj7ECgAosd+NInrDzBFe4wcUJpHF8aqyTSDpgZV4D0VWkETSp4JcXAsBcJP5ciTh8ArD+hp9AHAAA=
+  </data>
+ </layer>
+ <layer name="interaction1" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGP7AUmbUjlE7RsEoGAWjYHgDACcooAnQBwAA
+  </data>
+ </layer>
+ <layer name="interaction2" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMglEwCoYesJQZHnZQCwAATaJHM9AHAAA=
+  </data>
+ </layer>
+ <layer name="interaction3" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMglEwCgYHsJQZaBcMXQAAd+115NAHAAA=
+  </data>
+ </layer>
+</map>
