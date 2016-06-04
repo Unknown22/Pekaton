@@ -1,5 +1,6 @@
 package States;
 
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -7,7 +8,9 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.Input;
 
+import core.Engine;
 import core.Resources;
+import core.Window;
 
 public class GameState extends BasicGameState {
 	
@@ -50,6 +53,10 @@ public class GameState extends BasicGameState {
 		
 		if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
 			worker1_x--;
+			
+		}
+		
+		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
 			
 		}
 		
