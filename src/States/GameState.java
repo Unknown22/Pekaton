@@ -23,7 +23,7 @@ import org.newdawn.slick.geom.Shape;
 
 public class GameState extends BasicGameState {
 	
-	Shape player= new Rectangle(Worker.x, Worker.y, 32, 32);
+	Shape player= new Rectangle(Worker.x*32, Worker.y*32, 32, 32);
 	TiledMap mapa=Resources.getMap("mapa");
 	
 	@Override
@@ -39,38 +39,38 @@ public class GameState extends BasicGameState {
 		drawDebugLines(g, 32);
 		g.setColor(Color.cyan);
 		g.draw(player);
-		
-		g.drawImage(Resources.getSpritesheet("worker").getSubImage(0, 0, 15, 40), Worker.x, Worker.y);
+		mapa.render(0,0);
+		g.drawImage(Resources.getSpritesheet("worker").getSubImage(0, 0, 15, 40), Worker.x*32, Worker.y*32);
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int alpha) throws SlickException {
 		// TODO Auto-generated method stub
 		
-		player.setLocation(Worker.x, Worker.y);
+		player.setLocation(Worker.x * 32, Worker.y * 32);
 		
 		if (gc.getInput().isKeyDown(Input.KEY_W) || gc.getInput().isKeyDown(Input.KEY_UP)) {
 
-			if (!Collision.isCollision(Worker.x/32, Worker.y/32-1, mapa)){
+			if (!Collision.isCollision(Worker.x, Worker.y-1, mapa)){
 				Worker.y--;
 			}	
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_D) || gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-			if (!Collision.isCollision(Worker.x/32+1, Worker.y/32, mapa)){
+			if (!Collision.isCollision(Worker.x+1, Worker.y, mapa)){
 				Worker.x++;
 			}
 		}
 		
 		
 		if (gc.getInput().isKeyDown(Input.KEY_S) || gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-			if (!Collision.isCollision(Worker.x/32, (Worker.y/32)+1, mapa)){
+			if (!Collision.isCollision(Worker.x, Worker.y+1, mapa)){
 				Worker.y++;
 			}
 		}
 		
 		if (gc.getInput().isKeyDown(Input.KEY_A) || gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-			if (!Collision.isCollision(Worker.x/32-1, Worker.y/32, mapa)){
+			if (!Collision.isCollision(Worker.x-1, Worker.y, mapa)){
 				Worker.x--;
 			}
 		}
