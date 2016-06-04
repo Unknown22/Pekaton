@@ -83,13 +83,24 @@ public class GameState extends BasicGameState {
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
 			int interaction_id = Interaction.isInteraction(Worker.x, Worker.y, mapa);
 //			System.out.println(interaction_id);
+			if(interaction_id!=0)
+			{
+				if(Worker.id!=-1)
+					sbg.enterState(StatesCodes.WORKERSTATE);
+				else
+					sbg.enterState(StatesCodes.LOGINSTATE);
+			}
+				
+			System.out.println(interaction_id);
+		}
+
 		}
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_L)){
 			sbg.enterState(StatesCodes.WORKERSTATE);
 		}
 		
-		}
+		
 	}
 
 	@Override
