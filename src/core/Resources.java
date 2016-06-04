@@ -36,7 +36,8 @@ public class Resources {
 			//spritesheets.put("dead", new SpriteSheet(loadImage("/dead.png"), 32, 32 ));
 			spritesheets.put("worker", new SpriteSheet(loadImage("data/img/worker.png"), 15, 40 ));
 			maps.put("mapa", new TiledMap("/data/map/office.tmx"));
-			
+			spritesheets.put("monitor", new SpriteSheet(loadImage("data/img/monitor.png"), Window.width, Window.height));
+
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
