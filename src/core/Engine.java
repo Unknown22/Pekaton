@@ -39,7 +39,10 @@ public class Engine extends StateBasedGame{
 		gc.setTargetFrameRate(60);
 		gc.setVSync(true);
 		new Resources();
-			
+		
+		ClassesInstances.GameState=new States.GameState();
+		
+		this.addState(ClassesInstances.GameState);
 
 		
 		
