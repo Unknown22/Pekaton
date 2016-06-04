@@ -100,6 +100,10 @@ public class GameState extends BasicGameState {
 			sbg.enterState(StatesCodes.WORKERSTATE);
 		}
 		
+		if(gc.getInput().isKeyPressed(Input.KEY_K)){
+			sbg.enterState(StatesCodes.LOGINSTATE);
+		}
+		
 		
 	}
 
