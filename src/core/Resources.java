@@ -40,6 +40,7 @@ public class Resources {
 			spritesheets.put("w_right", new SpriteSheet("data/img/w_right.png", 35, 40 ));
 			spritesheets.put("w_left", new SpriteSheet("data/img/w_left.png", 35, 40 ));
 			spritesheets.put("boss", new SpriteSheet("data/img/boss.png", 35, 40 ));
+			spritesheets.put("mark", new SpriteSheet("data/img/mark.png", 64, 32 ));
 			maps.put("mapa", new TiledMap("/data/map/office_1.tmx"));
 			spritesheets.put("monitor", new SpriteSheet(loadImage("data/img/monitor.png"), Window.width, Window.height));
 			spritesheets.put("monitor_window", new SpriteSheet(loadImage("data/img/monitor_window.png"), Window.width, Window.height));

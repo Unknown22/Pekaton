@@ -40,20 +40,34 @@ public class CreditsState extends BasicGameState{
 		// TODO Auto-generated method stub
 		
 		g.setFont(font);
-		g.drawString("Dominik Nowak", 200, dominik);
-		g.drawString("Krzysztof Peziol", 200, krzychu);
-		g.drawString("Marcin Migda", 200, marcin);
-		g.drawString("Mateusz Skocz", 200, mateosz);
+		g.drawString("Dominik Nowak", 180, dominik);
+		g.drawString("Krzysztof Peziol", 180, krzychu);
+		g.drawString("Marcin Migda", 180, marcin);
+		g.drawString("Mateusz Skocz", 180, mateosz);
 
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		// TODO Auto-generated method stub
+		
 		dominik++;
 		krzychu++;
 		marcin++;
 		mateosz++;
+		
+		if(dominik > 640){
+			dominik = -100;
+		}
+		if(krzychu > 640){
+			krzychu = -100;
+		}
+		if(marcin> 640){
+			marcin = -100;
+		}
+		if(mateosz > 640){
+			mateosz = -100;
+		}
 		
 		if (gc.getInput().isKeyPressed(Input.KEY_ENTER)||gc.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
 			dominik = -100;

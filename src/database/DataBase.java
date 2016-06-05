@@ -184,7 +184,6 @@ public class DataBase {
 		} catch(SQLException e){
 			System.out.println("Blad przy aktualizacji expa pracownika");
 		}
-		
 	}
 	
 	public List<Zadanie> getWolneZadania(){

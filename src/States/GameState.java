@@ -19,6 +19,7 @@ import core.Engine;
 import core.Interaction;
 import core.Resources;
 import core.Window;
+import database.DataBase;
 
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
@@ -27,6 +28,8 @@ public class GameState extends BasicGameState {
 	
 	//Shape player= new Rectangle(Worker.x*32, Worker.y*32, 32, 32);
 	TiledMap mapa=Resources.getMap("mapa");
+	DataBase baza = new DataBase();
+
 	int licznik = 0;
 	
 	float przesuw_x = 0.0f;
@@ -37,15 +40,16 @@ public class GameState extends BasicGameState {
     Animation w_left;
     Animation w_front;
     Animation w_back;
+    Animation mark;
     
     SpriteSheet boss_s;
     SpriteSheet w_front_s;
     SpriteSheet w_back_s;
     SpriteSheet w_right_s;
     SpriteSheet w_left_s;
+    SpriteSheet mark_s;
     
     private int direction;
-	
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -54,6 +58,7 @@ public class GameState extends BasicGameState {
 //	      w_front.setAutoUpdate(true);
 //	      w_left.setAutoUpdate(true);
 //	      w_right.setAutoUpdate(true);
+		
 	      
 	      boss_s = new SpriteSheet(Resources.getSpritesheet("boss"), 35, 40);
 	      boss = new Animation(boss_s,100);
@@ -69,6 +74,9 @@ public class GameState extends BasicGameState {
 	      
 	      w_left_s = new SpriteSheet(Resources.getSpritesheet("w_left"), 35, 40);
 	      w_left = new Animation(w_left_s,100);
+	      
+	      mark_s = new SpriteSheet(Resources.getSpritesheet("mark"), 32, 32);
+	      mark = new Animation(mark_s,100);
 	      
 	      direction = 6;
 	      
@@ -86,7 +94,16 @@ public class GameState extends BasicGameState {
 
 		mapa.render(0,0);
 		//g.drawImage(Resources.getSpritesheet("boss").getSubImage(0,0,35,40), Worker.pozycja_x, Worker.pozycja_y);
-		boss.draw(224, 535);
+
+		
+		if(baza.getWolneZadania() == null){
+			boss.draw(224, 535);
+			mark.draw(224, 500);
+		}
+		else{
+			g.drawImage(Resources.getSpritesheet("boss").getSubImage(35,0,35,40), 224, 535);
+
+		}
 
 		switch(direction){
 		case 0:
