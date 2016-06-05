@@ -172,6 +172,11 @@ public class GameState extends BasicGameState {
 			}
 		}
 		
+		if (gc.getInput().isKeyDown(Input.KEY_A) && gc.getInput().isKeyDown(Input.KEY_C)) {
+				sbg.enterState(StatesCodes.CREDITSSTATE);
+			
+		}
+		
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)){
 			int interaction_id = Interaction.isInteraction(Worker.x, Worker.y, mapa);
