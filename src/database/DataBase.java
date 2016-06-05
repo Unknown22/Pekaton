@@ -125,5 +125,41 @@ public class DataBase {
 		
 		return sprinty;
 	}
+	
+	public void updatePracownikExpByZadanie(int id_pracownika, int id_zadania){
+		int exp_zadanie = 0;
+		int obecny_exp_pracownika = -1;
+		
+		try{
+			Statement s=connection.createStatement();  
+			ResultSet rs = s.executeQuery("SELECT doswiadczenie FROM zadanie WHERE id ="+id_zadania+";");
+			while(rs.next())
+			{
+				exp_zadanie=rs.getInt("doswiadczenie");
+			}
+		} catch(SQLException e){
+			System.out.println("Blad przy pobieraniu doswiadczenia za zadanie");
+		}
+		System.out.println(exp_zadanie);
+		
+		try{
+			Statement s=connection.createStatement();  
+			ResultSet rs = s.executeQuery("SELECT doswiadczenie FROM pracownik WHERE id ="+id_pracownika+";");
+			while(rs.next())
+			{
+				obecny_exp_pracownika=rs.getInt("doswiadczenie");
+			}
+			System.out.println(obecny_exp_pracownika);
+			
+			if(obecny_exp_pracownika>0){
+				int suma = exp_zadanie + obecny_exp_pracownika;
+				s.executeUpdate("UPDATE `pracownik` SET `doswiadczenie`='"+suma+"' WHERE `id`='"+id_pracownika+"';");
+			}
+		} catch(SQLException e){
+			System.out.println("Blad przy aktualizacji expa pracownika");
+		}
+		
+		
+	}
 
 }

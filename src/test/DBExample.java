@@ -38,6 +38,8 @@ public class DBExample {
 		
 		db.setZadanieStatusById(13, 1);
 		
+		db.updatePracownikExpByZadanie(2, 3);
+		
 	}
 
 }
