@@ -1,185 +1,134 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Czas generowania: 04 Cze 2016, 22:45
--- Wersja serwera: 10.1.10-MariaDB
--- Wersja PHP: 5.6.19
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: pekatondb
+-- ------------------------------------------------------
+-- Server version	5.1.73-community
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Baza danych: `pekaton`
+-- Table structure for table `admin`
 --
 
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `admin`
---
-
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(50) NOT NULL,
-  `haslo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `haslo` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Zrzut danych tabeli `admin`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `login`, `haslo`) VALUES
-(1, 'admin', 'admin');
-
--- --------------------------------------------------------
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'admin','admin');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Struktura tabeli dla tabeli `pracownik`
+-- Table structure for table `pracownik`
 --
 
+DROP TABLE IF EXISTS `pracownik`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pracownik` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(50) NOT NULL,
   `haslo` varchar(50) NOT NULL,
   `stanowisko` varchar(50) NOT NULL,
   `doswiadczenie` int(11) NOT NULL,
-  `data_zatrudnienia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `data_zatrudnienia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Zrzut danych tabeli `pracownik`
+-- Dumping data for table `pracownik`
 --
 
-INSERT INTO `pracownik` (`id`, `login`, `haslo`, `stanowisko`, `doswiadczenie`, `data_zatrudnienia`) VALUES
-(1, 'Nadia Romanov', 'nadia', 'Testowe', 0, '2016-06-04 15:27:58'),
-(2, 'YasiuEDITEDIT', 'yasiu', 'Java Full Stack Developer with A lot of MoneyEDIT', 99, '2016-06-04 15:27:58'),
-(3, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(4, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(6, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(7, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(8, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(9, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(10, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
-(11, 'a', 'a', 'a', 34, '2016-06-04 19:51:00');
-
--- --------------------------------------------------------
+LOCK TABLES `pracownik` WRITE;
+/*!40000 ALTER TABLE `pracownik` DISABLE KEYS */;
+INSERT INTO `pracownik` VALUES (12,'Marcin Migda','pass1','Management Engineer',0,'2016-06-05 04:43:45'),(13,'Mateusz Skocz','pass1','Administrator',0,'2016-06-05 04:44:45'),(14,'Dominik Nowak','pass1','Backend Developer',0,'2016-06-05 04:45:05'),(16,'Krzysztof Peziol','pass1','Graphic - Developer',0,'2016-06-05 05:22:34');
+/*!40000 ALTER TABLE `pracownik` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Struktura tabeli dla tabeli `sprint`
+-- Table structure for table `sprint`
 --
 
+DROP TABLE IF EXISTS `sprint`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sprint` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `poczatek` date DEFAULT NULL,
-  `koniec` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+  `koniec` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Struktura tabeli dla tabeli `zadanie`
+-- Dumping data for table `sprint`
 --
 
+LOCK TABLES `sprint` WRITE;
+/*!40000 ALTER TABLE `sprint` DISABLE KEYS */;
+INSERT INTO `sprint` VALUES (1,'2016-06-04','2016-06-05'),(2,'2016-06-05','2016-06-12');
+/*!40000 ALTER TABLE `sprint` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `zadanie`
+--
+
+DROP TABLE IF EXISTS `zadanie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zadanie` (
-  `id` int(11) NOT NULL,
-  `opis` varchar(255) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `opis` varchar(255) COLLATE utf8_polish_ci NOT NULL,
   `doswiadczenie` int(11) NOT NULL,
-  `zleceniodawca` varchar(50) NOT NULL,
+  `zleceniodawca` varchar(50) CHARACTER SET latin1 NOT NULL,
   `id_pracownika` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
-  `id_sprint` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_sprint` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Zrzut danych tabeli `zadanie`
+-- Dumping data for table `zadanie`
 --
 
-INSERT INTO `zadanie` (`id`, `opis`, `doswiadczenie`, `zleceniodawca`, `id_pracownika`, `status`, `id_sprint`) VALUES
-(1, 'Pierwsze zadanie testowe. Idz do kuchni i zrob mi kanapke!', 2, 'Mateusz', 1, 0, NULL),
-(3, 'Kodować żółć gęś', 123, '113', 1, 1, NULL),
-(4, '23123123', 69, 'Matius', 4, 1, NULL),
-(5, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
-(12, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, NULL),
-(13, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
-(14, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, NULL),
-(15, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
-(16, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
-(17, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
-(18, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
-(19, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
-(20, 'bfdbfbd', 65, 'Dominik', 11, 0, NULL);
+LOCK TABLES `zadanie` WRITE;
+/*!40000 ALTER TABLE `zadanie` DISABLE KEYS */;
+INSERT INTO `zadanie` VALUES (28,'Ocenic projekty',20,'Politechnika',0,0,1),(29,'Zrobic grafike',10,'Marcin Migda',13,0,1),(30,'Zaprogramowac backend',12,'Marcin Migda',14,0,1),(31,'Testowe zadanie 1',2,'Dominik Nowak',12,0,1),(32,'Testowe zadanie 2',4,'Krzysztof Peziol',12,0,1),(33,'Testowe zadanie 3',7,'Mateusz Skocz',12,0,1),(34,'Testowe zadanie 4',9,'Politechnika',12,0,1),(35,'Testowe zadanie 5',3,'SII',0,0,1);
+/*!40000 ALTER TABLE `zadanie` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indeksy dla zrzutów tabel
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pracownik`
---
-ALTER TABLE `pracownik`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sprint`
---
-ALTER TABLE `sprint`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `zadanie`
---
-ALTER TABLE `zadanie`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_pracownika` (`id_pracownika`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT dla tabeli `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT dla tabeli `pracownik`
---
-ALTER TABLE `pracownik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT dla tabeli `sprint`
---
-ALTER TABLE `sprint`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT dla tabeli `zadanie`
---
-ALTER TABLE `zadanie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- Ograniczenia dla zrzutów tabel
---
-
---
--- Ograniczenia dla tabeli `zadanie`
---
-ALTER TABLE `zadanie`
-  ADD CONSTRAINT `zadanie_ibfk_1` FOREIGN KEY (`id_pracownika`) REFERENCES `pracownik` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-06-05  7:33:42
