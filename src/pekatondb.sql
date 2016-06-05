@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Cze 2016, 12:47
--- Wersja serwera: 10.1.8-MariaDB
--- Wersja PHP: 5.6.14
+-- Czas generowania: 04 Cze 2016, 22:45
+-- Wersja serwera: 10.1.10-MariaDB
+-- Wersja PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `pekatondb`
+-- Baza danych: `pekaton`
 --
 
 -- --------------------------------------------------------
@@ -50,23 +50,37 @@ CREATE TABLE `pracownik` (
   `login` varchar(50) NOT NULL,
   `haslo` varchar(50) NOT NULL,
   `stanowisko` varchar(50) NOT NULL,
-  `doswiadczenie` int(11) NOT NULL
+  `doswiadczenie` int(11) NOT NULL,
+  `data_zatrudnienia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `pracownik`
 --
 
-INSERT INTO `pracownik` (`id`, `login`, `haslo`, `stanowisko`, `doswiadczenie`) VALUES
-(1, 'Nadia Romanov', 'nadia', 'Testowe', 0),
-(2, 'YasiuEDITEDIT', 'yasiu', 'Java Full Stack Developer with A lot of MoneyEDIT', 99),
-(3, 'Mateosz', 'mateosz', 'tester', 98),
-(4, 'Mateosz', 'mateosz', 'tester', 98),
-(6, 'Mateosz', 'mateosz', 'tester', 98),
-(7, 'Mateosz', 'mateosz', 'tester', 98),
-(8, 'Mateosz', 'mateosz', 'tester', 98),
-(9, 'Mateosz', 'mateosz', 'tester', 98),
-(10, 'Mateosz', 'mateosz', 'tester', 98);
+INSERT INTO `pracownik` (`id`, `login`, `haslo`, `stanowisko`, `doswiadczenie`, `data_zatrudnienia`) VALUES
+(1, 'Nadia Romanov', 'nadia', 'Testowe', 0, '2016-06-04 15:27:58'),
+(2, 'YasiuEDITEDIT', 'yasiu', 'Java Full Stack Developer with A lot of MoneyEDIT', 99, '2016-06-04 15:27:58'),
+(3, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(4, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(6, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(7, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(8, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(9, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(10, 'Mateosz', 'mateosz', 'tester', 98, '2016-06-04 15:27:58'),
+(11, 'a', 'a', 'a', 34, '2016-06-04 19:51:00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `sprint`
+--
+
+CREATE TABLE `sprint` (
+  `id` int(11) NOT NULL,
+  `poczatek` date DEFAULT NULL,
+  `koniec` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -76,22 +90,35 @@ INSERT INTO `pracownik` (`id`, `login`, `haslo`, `stanowisko`, `doswiadczenie`) 
 
 CREATE TABLE `zadanie` (
   `id` int(11) NOT NULL,
-  `opis` varchar(255) NOT NULL,
+  `opis` varchar(255) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   `doswiadczenie` int(11) NOT NULL,
   `zleceniodawca` varchar(50) NOT NULL,
   `id_pracownika` int(11) DEFAULT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `id_sprint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Zrzut danych tabeli `zadanie`
 --
 
-INSERT INTO `zadanie` (`id`, `opis`, `doswiadczenie`, `zleceniodawca`, `id_pracownika`, `status`) VALUES
-(1, 'Pierwsze zadanie testowe. Idz do kuchni i zrob mi kanapke!', 2, 'Mateusz', 1, 0);
+INSERT INTO `zadanie` (`id`, `opis`, `doswiadczenie`, `zleceniodawca`, `id_pracownika`, `status`, `id_sprint`) VALUES
+(1, 'Pierwsze zadanie testowe. Idz do kuchni i zrob mi kanapke!', 2, 'Mateusz', 1, 0, NULL),
+(3, 'Kodować żółć gęś', 123, '113', 1, 1, NULL),
+(4, '23123123', 69, 'Matius', 4, 1, NULL),
+(5, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(12, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, NULL),
+(13, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(14, 'Opis Testowy', 2, 'Krzyzszof', 6, 0, NULL),
+(15, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(16, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(17, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(18, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(19, 'Opis Testowy', 2, 'Krzyzszof', NULL, 0, NULL),
+(20, 'bfdbfbd', 65, 'Dominik', 11, 0, NULL);
 
 --
--- Indeksy dla zrzut�w tabel
+-- Indeksy dla zrzutów tabel
 --
 
 --
@@ -104,6 +131,12 @@ ALTER TABLE `admin`
 -- Indexes for table `pracownik`
 --
 ALTER TABLE `pracownik`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sprint`
+--
+ALTER TABLE `sprint`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -126,21 +159,26 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT dla tabeli `pracownik`
 --
 ALTER TABLE `pracownik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT dla tabeli `sprint`
+--
+ALTER TABLE `sprint`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT dla tabeli `zadanie`
 --
 ALTER TABLE `zadanie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
--- Ograniczenia dla zrzut�w tabel
+-- Ograniczenia dla zrzutów tabel
 --
 
 --
 -- Ograniczenia dla tabeli `zadanie`
 --
 ALTER TABLE `zadanie`
-  ADD CONSTRAINT `zadanie_ibfk_1` FOREIGN KEY (`id_pracownika`) REFERENCES `pracownik` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `zadanie_ibfk_1` FOREIGN KEY (`id_pracownika`) REFERENCES `pracownik` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -42,9 +42,12 @@ public class Engine extends StateBasedGame{
 		
 		ClassesInstances.gameState=new States.GameState();
 		ClassesInstances.workerStatState=new States.WorkerStatState();
+		ClassesInstances.loginState=new States.LoginState();
+
 			
 		this.addState(ClassesInstances.gameState);
 		this.addState(ClassesInstances.workerStatState);
+		this.addState(ClassesInstances.loginState);
 
 		
 		
