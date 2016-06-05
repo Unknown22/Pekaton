@@ -5,6 +5,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -50,6 +51,8 @@ public class GameState extends BasicGameState {
     SpriteSheet mark_s;
     
     private int direction;
+    
+    private Sound entrySound;
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -79,6 +82,8 @@ public class GameState extends BasicGameState {
 	      mark = new Animation(mark_s,100);
 	      
 	      direction = 6;
+	      
+	      entrySound=new Sound("/data/sound/windows.wav");
 	      
 	}
 
@@ -200,6 +205,7 @@ public class GameState extends BasicGameState {
 //			System.out.println(interaction_id);
 			if(interaction_id!=0)
 			{
+				entrySound.play();
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.WORKERSTATE);
 				else
@@ -210,6 +216,7 @@ public class GameState extends BasicGameState {
 
 			if(interaction_id==1)
 			{
+				entrySound.play();
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.WORKERSTATE);
 				else
@@ -217,6 +224,7 @@ public class GameState extends BasicGameState {
 			}
 			else if(interaction_id==2)
 			{
+				entrySound.play();
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.NEWTASKSTATE);
 				else
