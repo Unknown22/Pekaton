@@ -205,30 +205,37 @@ public class GameState extends BasicGameState {
 //			System.out.println(interaction_id);
 			if(interaction_id!=0)
 			{
-				entrySound.play();
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.WORKERSTATE);
 				else
+				{
+					entrySound.play();
 					sbg.enterState(StatesCodes.LOGINSTATE);
+				}
+					
 			}
 				
 			System.out.println(interaction_id);
 
 			if(interaction_id==1)
 			{
-				entrySound.play();
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.WORKERSTATE);
 				else
+				{
+					entrySound.play();
 					sbg.enterState(StatesCodes.LOGINSTATE);
+				}
 			}
 			else if(interaction_id==2)
 			{
-				entrySound.play();
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.NEWTASKSTATE);
 				else
+				{
+					entrySound.play();
 					sbg.enterState(StatesCodes.LOGINSTATE);
+				}
 			}
 				
 			//System.out.println(interaction_id);
