@@ -143,10 +143,6 @@ public class WorkerStatState extends BasicGameState {
 			g.drawString("Brak zada�", margin+cellMargin, 300);
 		}
 		
-				
-
-		
-		
 	}
 
 	@Override
@@ -161,8 +157,7 @@ public class WorkerStatState extends BasicGameState {
 			zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
 		}
 			
-		
-		
+		zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_L) || gc.getInput().isKeyPressed(Input.KEY_ESCAPE)){
 			sbg.enterState(StatesCodes.GAMESTATE);
