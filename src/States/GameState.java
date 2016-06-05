@@ -96,7 +96,7 @@ public class GameState extends BasicGameState {
 		//g.drawImage(Resources.getSpritesheet("boss").getSubImage(0,0,35,40), Worker.pozycja_x, Worker.pozycja_y);
 
 		
-		if(baza.getWolneZadania() == null){
+		if(!baza.getWolneZadania().isEmpty()){
 			boss.draw(224, 535);
 			mark.draw(224, 500);
 		}
