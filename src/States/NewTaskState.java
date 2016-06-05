@@ -9,11 +9,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -39,6 +36,7 @@ public class NewTaskState extends BasicGameState {
 	UnicodeFont font = new UnicodeFont(new Font("Minecraftia", Font.PLAIN, 20));
 	int i=0; //nr zadania
 	int id=-1;
+	int takenTaskId[];
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -91,7 +89,10 @@ public class NewTaskState extends BasicGameState {
 			g.drawString(Integer.toString(zadania.get(i).getDoswiadczenie()), margin+cellMargin, 275);
 			g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 350);
 			
-			g.drawImage(Resources.getSpritesheet("wezzadanie").getSubImage(0, 0, 120, 32), margin+cellMargin, 400 );
+			if(takenTaskId[i]==1)
+				g.drawString("Zadanie wziête", margin+cellMargin, 400);
+			else
+				g.drawImage(Resources.getSpritesheet("wezzadanie").getSubImage(0, 0, 120, 32), margin+cellMargin, 400 );
 			
 			if(zadania.get(i).getIdSprintu()>0)
 			{
@@ -124,6 +125,11 @@ public class NewTaskState extends BasicGameState {
 			id=Worker.id;
 			pracownik=db.getPracownikByID(id);
 			zadania = (ArrayList<Zadanie>) db.getWolneZadania();
+			takenTaskId=new int[zadania.size()];
+			for(int j=0; j<zadania.size(); j++)
+			{
+				takenTaskId[j]=0;
+			}
 		}
 			
 		
@@ -154,11 +160,11 @@ public class NewTaskState extends BasicGameState {
 				 sbg.enterState(StatesCodes.GAMESTATE);
 			 }
 		}
-		if ((xpos > 400 && xpos < 400+120) && (ypos > 375 && ypos < 375+34)) {
+		if ((xpos > 50 && xpos < 50+120) && (ypos > 400 && ypos < 400+34)) {
 
 			 if (gc.getInput().isMousePressed(0)) {
-				 
-				 
+				 db.setPracownikToZadanie(pracownik.getId(), zadania.get(i).getId());
+				 takenTaskId[i]=1;
 			 }
 		}
 	}
