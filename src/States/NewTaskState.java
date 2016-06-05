@@ -75,7 +75,8 @@ public class NewTaskState extends BasicGameState {
 		g.drawString(Integer.toString(pracownik.getExp()), margin+cellMargin+cellWidth*2, 200);
 		
 		g.setColor(Color.blue);
-		g.drawString("Zadania do wziêcia: ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
+		if(i>0)
+			g.drawString("Zadania do wziêcia: ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
 		
 		
 		g.setColor(new Color(0x1E1B68));
