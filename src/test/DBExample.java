@@ -48,7 +48,7 @@ public class DBExample {
 
 		db.updatePracownikExpByZadanie(2, 3);
 
-		
+		db.setPracownikToZadanie(3, 5);
 	}
 
 }
