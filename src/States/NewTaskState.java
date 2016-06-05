@@ -130,6 +130,7 @@ public class NewTaskState extends BasicGameState {
 			id=Worker.id;
 			pracownik=db.getPracownikByID(id);
 			zadania = (ArrayList<Zadanie>) db.getWolneZadania();
+			i=0;
 			takenTaskId=new int[zadania.size()];
 			for(int j=0; j<zadania.size(); j++)
 			{
@@ -167,13 +168,14 @@ public class NewTaskState extends BasicGameState {
 				 click.play(); 
 				 sbg.enterState(StatesCodes.GAMESTATE);
 				 id=Worker.id;
-					pracownik=db.getPracownikByID(id);
-					zadania = (ArrayList<Zadanie>) db.getWolneZadania();
-					takenTaskId=new int[zadania.size()];
-					for(int j=0; j<zadania.size(); j++)
-					{
-						takenTaskId[j]=0;
-					}
+				pracownik=db.getPracownikByID(id);
+				zadania = (ArrayList<Zadanie>) db.getWolneZadania();
+				i=0;
+				takenTaskId=new int[zadania.size()];
+				for(int j=0; j<zadania.size(); j++)
+				{
+					takenTaskId[j]=0;
+				}
 			 }
 		}
 		if ((xpos > 50 && xpos < 50+120) && (ypos > 400 && ypos < 400+34)) {
