@@ -29,14 +29,15 @@ public class LoginState extends BasicGameState {
 	TextField password;
 	int margin=40;
 	DataBase db = new DataBase();
-	boolean isAlreadyLogged=false;
+	int isAlreadyLogged=0;
+
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		font.addGlyphs("¹æ³óê¿Ÿñœ");
+		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½");
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
-		font.addGlyphs("¹æ³óê¿Ÿñœ"); // szczególnie wa¿na jest ta linijka bo
+		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½"); // szczegï¿½lnie waï¿½na jest ta linijka bo
 											// to ona dodaje polskie znaki
 		font.addNeheGlyphs();
 		font.loadGlyphs();
@@ -55,12 +56,13 @@ public class LoginState extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		if(isAlreadyLogged==false)
+
+		if(isAlreadyLogged==0 ||isAlreadyLogged==2)
 		{
 			g.drawImage(Resources.getSpritesheet("monitor_login").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 			g.setFont(font);
 			g.setColor(Color.black);
-			g.drawString("Zaloguj siê", Window.width/2-margin, 100);
+			g.drawString("Zaloguj siï¿½", Window.width/2-margin, 100);
 			g.drawString("Login:", 150, 130);
 			
 			g.setColor(Color.black);
@@ -75,13 +77,21 @@ public class LoginState extends BasicGameState {
 			password.setInput(gc.getInput());
 			g.setColor(Color.white);
 			password.render(gc, g);
+			
+			if(isAlreadyLogged==2)
+			{
+				g.setFont(font);
+				g.setColor(Color.black);
+				g.drawString("Niepoprawny login lub haslo", Window.width/2-margin*4, 280);
+			}
+
 		}
 		else
 		{
 			g.drawImage(Resources.getSpritesheet("monitor_window").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 			g.setFont(font);
 			g.setColor(Color.black);
-			g.drawString("Zalogowano pomyœlnie", Window.width/2-margin*4, Window.height/2);
+			g.drawString("Zalogowano pomyï¿½lnie", Window.width/2-margin*4, Window.height/2);
 		}
 		
 		
@@ -122,7 +132,12 @@ public class LoginState extends BasicGameState {
 			     if(id>=0)
 			     {
 			    	 Worker.id=id;
-			    	 isAlreadyLogged=true;
+
+			    	 isAlreadyLogged=1;
+			     }
+			     else
+			     {
+			    	 isAlreadyLogged=2;
 			     }
 			 } 
 		 }

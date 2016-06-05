@@ -26,34 +26,25 @@ import model.Zadanie;
 import database.DataBase;
 
 
-
-public class WorkerStatState extends BasicGameState {
+public class NewTaskState extends BasicGameState {
 
 	DataBase db = new DataBase();
 	int margin=40;
 	int cellMargin=10;
 	Pracownik pracownik;
 	ArrayList<Zadanie> zadania;
-
 	List<Sprint> sprinty=db.getAllSprints();
-
 	int cellWidth=(Window.width-margin*2)/3;
 	int cellWidth2=(Window.width-margin*2)/4;
 	UnicodeFont font = new UnicodeFont(new Font("Minecraftia", Font.PLAIN, 20));
-
 	int i=0; //nr zadania
 	int id=-1;
-	
-	int statusActualTask=0;
-
-	
-	
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
-		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½"); // szczegï¿½lnie waï¿½na jest ta linijka bo
+		font.addGlyphs("¹æ³óê¿Ÿñœ"); // szczególnie wa¿na jest ta linijka bo
 		// to ona dodaje polskie znaki
 		font.addNeheGlyphs();
 		font.loadGlyphs();
@@ -72,7 +63,7 @@ public class WorkerStatState extends BasicGameState {
 		
 		g.drawString("ID", margin+cellMargin, 150);
 		g.drawString("Stanowisko", margin+cellMargin+cellWidth, 150);
-		g.drawString("Doï¿½wiadczenie", margin+cellMargin+cellWidth*2, 150);
+		g.drawString("Doœwiadczenie", margin+cellMargin+cellWidth*2, 150);
 
 		
 		g.setColor(Color.darkGray);
@@ -81,15 +72,12 @@ public class WorkerStatState extends BasicGameState {
 		g.drawString(Integer.toString(pracownik.getExp()), margin+cellMargin+cellWidth*2, 200);
 		
 		g.setColor(Color.blue);
-
-		g.drawString("Zadania ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
-
+		g.drawString("Zadania do wziêcia: ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
 		
 		
 		g.setColor(new Color(0x1E1B68));
 		if(zadania.isEmpty()==false)
 		{
-
 			String opisTemp=zadania.get(i).getOpis();
 			if(opisTemp.length()>46)
 			{
@@ -98,29 +86,12 @@ public class WorkerStatState extends BasicGameState {
 			}
 			else
 				g.drawString(zadania.get(i).getOpis(), margin+cellMargin, 300);
+			
 			g.setColor(Color.darkGray);
 			g.drawString(Integer.toString(zadania.get(i).getDoswiadczenie()), margin+cellMargin, 275);
 			g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 350);
-			if(zadania.get(i).getStatus()==0)
-			{
-				g.setColor(Color.red);
-				g.drawString("Niewykonane", margin+cellMargin, 375);
-				statusActualTask=0;
-				g.drawImage(Resources.getSpritesheet("doweryfikacji").getSubImage(0, 0, 120, 32), margin+cellMargin+350, 375 );
-			}
-			else if(zadania.get(i).getStatus()==1)
-			{
-				g.setColor(new Color(0x184991));
-				g.drawString("Do weryfikacji", margin+cellMargin, 375);
-				statusActualTask=1;
-				g.drawImage(Resources.getSpritesheet("popraw").getSubImage(0, 0, 120, 32), margin+cellMargin+350, 375 );
-			}
-			else if(zadania.get(i).getStatus()==2)
-			{
-				g.setColor(new Color(0x12902B));
-				g.drawString("Wykonane", margin+cellMargin, 375);
-				statusActualTask=2;
-			}
+			
+			g.drawImage(Resources.getSpritesheet("wezzadanie").getSubImage(0, 0, 120, 32), margin+cellMargin, 400 );
 			
 			if(zadania.get(i).getIdSprintu()>0)
 			{
@@ -135,17 +106,12 @@ public class WorkerStatState extends BasicGameState {
 				g.drawString("Data zakonczenia sprintu:", margin+cellMargin, 475);
 				g.setColor(Color.darkGray);
 				g.drawString(koniec, margin+cellMargin+400, 475);
-
 			}
 		}
 		else
 		{
-			g.drawString("Brak zadaï¿½", margin+cellMargin, 300);
+			g.drawString("Brak zadañ", margin+cellMargin, 300);
 		}
-		
-				
-
-		
 		
 	}
 
@@ -156,9 +122,8 @@ public class WorkerStatState extends BasicGameState {
 		if(Worker.id>=0 && id!=Worker.id)
 		{
 			id=Worker.id;
-
 			pracownik=db.getPracownikByID(id);
-			zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
+			zadania = (ArrayList<Zadanie>) db.getWolneZadania();
 		}
 			
 		
@@ -188,30 +153,20 @@ public class WorkerStatState extends BasicGameState {
 			 if (gc.getInput().isMousePressed(0)) {
 				 sbg.enterState(StatesCodes.GAMESTATE);
 			 }
-
 		}
 		if ((xpos > 400 && xpos < 400+120) && (ypos > 375 && ypos < 375+34)) {
 
 			 if (gc.getInput().isMousePressed(0)) {
-				 if(statusActualTask==0)
-				 {
-					 db.setZadanieStatusById(zadania.get(i).getId(), 1);
-					 zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
-				 }
-				 else if(statusActualTask==1)
-				 {
-					 db.setZadanieStatusById(zadania.get(i).getId(), 0);
-					 zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
-				 }
+				 
+				 
 			 }
 		}
-
 	}
 
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
-		return StatesCodes.WORKERSTATE;
+		return StatesCodes.NEWTASKSTATE ;
 	}
 
 }

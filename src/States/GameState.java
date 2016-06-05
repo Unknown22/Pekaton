@@ -46,6 +46,7 @@ public class GameState extends BasicGameState {
     
     private int direction;
 	
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
@@ -79,8 +80,10 @@ public class GameState extends BasicGameState {
 		
 		//line to debug and bla bla other things
 //		drawDebugLines(g, 32);
+
 //		g.setColor(Color.cyan);
 //		g.draw(player);
+
 		mapa.render(0,0);
 		//g.drawImage(Resources.getSpritesheet("boss").getSubImage(0,0,35,40), Worker.pozycja_x, Worker.pozycja_y);
 		boss.draw(224, 535);
@@ -114,6 +117,7 @@ public class GameState extends BasicGameState {
 			default:
 				break;
 		}
+
 	}
 
 	@Override
@@ -181,10 +185,28 @@ public class GameState extends BasicGameState {
 			}
 				
 			System.out.println(interaction_id);
+
+			if(interaction_id==1)
+			{
+				if(Worker.id!=-1)
+					sbg.enterState(StatesCodes.WORKERSTATE);
+				else
+					sbg.enterState(StatesCodes.LOGINSTATE);
+			}
+			else if(interaction_id==2)
+			{
+				if(Worker.id!=-1)
+					sbg.enterState(StatesCodes.NEWTASKSTATE);
+				else
+					sbg.enterState(StatesCodes.LOGINSTATE);
+			}
+				
+			//System.out.println(interaction_id);
 		}
 
 		}
 		
+
 		if(gc.getInput().isKeyPressed(Input.KEY_L)){
 			sbg.enterState(StatesCodes.WORKERSTATE);
 		}
@@ -198,6 +220,7 @@ public class GameState extends BasicGameState {
 
 
 		
+
 	}
 
 	@Override

@@ -8,6 +8,7 @@ public class Zadanie {
 	private String zleceniodawca;
 	private int ipPracownika = 0;
 	private int status = 0;
+	private int idSprintu = 0;
 	/*
 	 * status
 	 * 1 - zakonczone
@@ -15,6 +16,20 @@ public class Zadanie {
 	
 	
 	
+	public int getIdSprintu() {
+		return idSprintu;
+	}
+
+
+
+
+	public void setIdSprintu(int idSprintu) {
+		this.idSprintu = idSprintu;
+	}
+
+
+
+
 	public String getOpis() {
 		return opis;
 	}
@@ -28,7 +43,7 @@ public class Zadanie {
 
 
 
-	public Zadanie(int id, String opis, int doswiadczenie, String zleceniodawca, int ipPracownika, int status) {
+	public Zadanie(int id, String opis, int doswiadczenie, String zleceniodawca, int ipPracownika, int status, int idSprintu) {
 		super();
 		this.id = id;
 		this.opis = opis;
@@ -36,6 +51,7 @@ public class Zadanie {
 		this.zleceniodawca = zleceniodawca;
 		this.ipPracownika = ipPracownika;
 		this.status = status;
+		this.idSprintu = idSprintu;
 	}
 	public void setOpis(String opis) {
 		this.opis = opis;
@@ -67,7 +83,7 @@ public class Zadanie {
 	@Override
 	public String toString() {
 		return "Zadanie [opis=" + opis + ", doswiadczenie=" + doswiadczenie + ", zleceniodawca=" + zleceniodawca
-				+ ", ipPracownika=" + ipPracownika + ", status=" + status + "]";
+				+ ", ipPracownika=" + ipPracownika + ", status=" + status + ", id_sprint= " + idSprintu+"]";
 	}
 	public int getId() {
 		return id;
