@@ -186,5 +186,37 @@ public class DataBase {
 		}
 		
 	}
+	
+	public List<Zadanie> getWolneZadania(){
+		List<Zadanie> zadania = new ArrayList<Zadanie>();
+		
+		try{
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM zadanie WHERE id_pracownika is null;");
+			
+			while (rs.next()) {
+				Zadanie zadanie = new Zadanie(rs.getInt("id"),
+												rs.getString("opis"),
+												rs.getInt("doswiadczenie"),
+												rs.getString("zleceniodawca"),
+												0,
+												rs.getInt("status"),
+												rs.getInt("id_sprint"));
+				zadania.add(zadanie);
+			}
+			
+		} catch (SQLException e){
+			System.out.println("Blad przy pobieraniu nie przypisanych zadan");
+		}
+		return zadania;
+	}
 
+	public void setPracownikToZadanie(int id_pracownika, int id_zadania){
+		try{
+			Statement s=connection.createStatement();  
+			s.executeUpdate("UPDATE `zadanie` SET `id_pracownika`='"+id_pracownika+"' WHERE `id`='"+id_zadania+"';");
+		} catch (SQLException e){
+			System.out.println("Blad przypisania zadania do pracownika");
+		}
+	}
 }
