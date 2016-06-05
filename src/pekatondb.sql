@@ -118,7 +118,7 @@ CREATE TABLE `zadanie` (
 
 LOCK TABLES `zadanie` WRITE;
 /*!40000 ALTER TABLE `zadanie` DISABLE KEYS */;
-INSERT INTO `zadanie` VALUES (28,'Ocenic projekty',20,'Politechnika',0,0,1),(29,'Zrobic grafike',10,'Marcin Migda',13,0,1),(30,'Zaprogramowac backend',12,'Marcin Migda',14,0,2),(31,'Testowe zadanie 1',2,'Dominik Nowak',12,0,1),(32,'Testowe zadanie 2',4,'Krzysztof Peziol',12,1,2),(33,'Testowe zadanie 3',7,'Mateusz Skocz',12,2,1),(34,'Testowe zadanie 4',9,'Politechnika',12,0,1),(35,'Testowe zadanie 5',3,'SII',0,0,2),(37,'Testowe zadanie 7',12,'Mateusz Skocz',12,0,1),(38,'ZADDDANIE',0,'PISIONT GROSZY',12,0,3);
+INSERT INTO `zadanie` VALUES (28,'Ocenic projekty',20,'Politechnika',0,0,1),(29,'Zrobic grafike',10,'Marcin Migda',13,0,1),(30,'Zaprogramowac backend',12,'Marcin Migda',14,0,2),(31,'Testowe zadanie 1',2,'Dominik Nowak',12,0,1),(32,'Testowe zadanie 2',4,'Krzysztof Peziol',12,1,2),(33,'Testowe zadanie 3',7,'Mateusz Skocz',12,2,1),(34,'Testowe zadanie 4',9,'Politechnika',12,0,1),(35,'Testowe zadanie 5',3,'SII',0,0,2);
 /*!40000 ALTER TABLE `zadanie` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -131,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-05  8:45:39
+-- Dump completed on 2016-06-05  8:57:09
