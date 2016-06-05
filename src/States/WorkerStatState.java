@@ -9,6 +9,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -46,18 +47,21 @@ public class WorkerStatState extends BasicGameState {
 	
 	int statusActualTask=0;
 
-	
+    private Sound click;
+
 	
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
-		font.addGlyphs("¹æ³óê¿Ÿñœ"); // szczególnie wa¿na jest ta linijka bo
+		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½"); // szczegï¿½lnie waï¿½na jest ta linijka bo
 										// to ona dodaje polskie znaki 
 		font.addNeheGlyphs();
 		font.loadGlyphs();
 		
+		click = Resources.getSound("click");
+
 	}
 
 	@Override
@@ -72,7 +76,7 @@ public class WorkerStatState extends BasicGameState {
 		
 		g.drawString("ID", margin+cellMargin, 150);
 		g.drawString("Stanowisko", margin+cellMargin+cellWidth, 150);
-		g.drawString("Doœwiadczenie", margin+cellMargin+cellWidth*2, 150);
+		g.drawString("Doï¿½wiadczenie", margin+cellMargin+cellWidth*2, 150);
 
 		
 		g.setColor(Color.darkGray);
@@ -83,6 +87,7 @@ public class WorkerStatState extends BasicGameState {
 		g.setColor(Color.blue);
 
 		g.drawString("Zadania ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
+		
 
 		
 		
@@ -181,6 +186,7 @@ public class WorkerStatState extends BasicGameState {
 		if ((xpos > 739 && xpos < 739+18) && (ypos > 40 && ypos < 40+20)) {
 
 			 if (gc.getInput().isMousePressed(0)) {
+				 click.play();
 				 sbg.enterState(StatesCodes.GAMESTATE);
 			 }
 
@@ -190,6 +196,7 @@ public class WorkerStatState extends BasicGameState {
 			 if (gc.getInput().isMousePressed(0)) {
 				 if(statusActualTask==0)
 				 {
+					 click.play();
 					 db.setZadanieStatusById(zadania.get(i).getId(), 1);
 					 zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
 				 }

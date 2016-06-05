@@ -14,6 +14,7 @@ import org.newdawn.slick.tiled.TiledMap;
 import GameElements.Worker;
 
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 
 import core.Collision;
 import core.Engine;
@@ -53,6 +54,8 @@ public class GameState extends BasicGameState {
     private int direction;
     
     private Sound entrySound;
+    
+
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -83,7 +86,8 @@ public class GameState extends BasicGameState {
 	      
 	      direction = 6;
 	      
-	      entrySound=new Sound("/data/sound/windows.wav");
+			entrySound = Resources.getSound("login");
+
 	      
 	}
 
