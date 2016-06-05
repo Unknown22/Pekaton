@@ -10,11 +10,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
-import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -76,7 +73,7 @@ public class WorkerStatState extends BasicGameState {
 		
 		g.drawString("ID", margin+cellMargin, 150);
 		g.drawString("Stanowisko", margin+cellMargin+cellWidth, 150);
-		g.drawString("Doï¿½wiadczenie", margin+cellMargin+cellWidth*2, 150);
+		g.drawString("Doœwiadczenie", margin+cellMargin+cellWidth*2, 150);
 
 		
 		g.setColor(Color.darkGray);

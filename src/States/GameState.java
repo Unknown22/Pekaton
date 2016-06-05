@@ -1,7 +1,6 @@
 package States;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -14,17 +13,12 @@ import org.newdawn.slick.tiled.TiledMap;
 import GameElements.Worker;
 
 import org.newdawn.slick.Input;
-import org.newdawn.slick.Music;
 
 import core.Collision;
-import core.Engine;
 import core.Interaction;
 import core.Resources;
-import core.Window;
 import database.DataBase;
 
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
 
 public class GameState extends BasicGameState {
 	
