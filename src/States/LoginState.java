@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -33,14 +34,16 @@ public class LoginState extends BasicGameState {
 	int margin=40;
 	DataBase db = new DataBase();
 	int isAlreadyLogged=0;
+	
+	 private Sound click;
 
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		font.addGlyphs("¹æ³óê¿Ÿñœ");
+		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½");
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
-		font.addGlyphs("¹æ³óê¿Ÿñœ"); // szczególnie wa¿na jest ta linijka bo
+		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½"); // szczegï¿½lnie waï¿½na jest ta linijka bo
 										// to ona dodaje polskie znaki
 		font.addNeheGlyphs();
 		font.loadGlyphs();
@@ -56,6 +59,9 @@ public class LoginState extends BasicGameState {
 			});
 		password.setMaskEnabled(true);
 		password.setMaskCharacter('*');
+		
+		click = Resources.getSound("click");
+
 	}
 
 	@Override
@@ -67,7 +73,7 @@ public class LoginState extends BasicGameState {
 			g.drawImage(Resources.getSpritesheet("monitor_login").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 			g.setFont(font);
 			g.setColor(Color.black);
-			g.drawString("Zaloguj siê½", Window.width/2-margin, 100);
+			g.drawString("Zaloguj siï¿½", Window.width/2-margin, 100);
 			g.drawString("Login:", 150, 130);
 			
 			g.setColor(Color.black);
@@ -96,7 +102,7 @@ public class LoginState extends BasicGameState {
 			g.drawImage(Resources.getSpritesheet("monitor_window").getSubImage(0, 0, Window.width, Window.height), 0 ,0);
 			g.setFont(font);
 			g.setColor(Color.black);
-			g.drawString("Zalogowano pomyœlnie", Window.width/2-margin*4, Window.height/2);
+			g.drawString("Zalogowano pomyï¿½lnie", Window.width/2-margin*4, Window.height/2);
 		}
 		
 		
@@ -130,10 +136,14 @@ public class LoginState extends BasicGameState {
 		 
 		 if ((xpos > 340 && xpos < 462) && (ypos > 322 && ypos < 354)) {//tu zmienic na przycisk
 
-			 if (gc.getInput().isMousePressed(0)) {
+			 if (
+					 
+				gc.getInput().isMousePressed(0)) {
+				 
 				 String log=login.getText();
 			     String pass=password.getText();
 			     int id=db.getIdBy(log, pass);
+			     
 			     if(id>=0)
 			     {
 			    	 Worker.id=id;
@@ -149,7 +159,9 @@ public class LoginState extends BasicGameState {
 		 
 		 if ((xpos > 739 && xpos < 739+18) && (ypos > 40 && ypos < 40+20)) {
 
-			 if (gc.getInput().isMousePressed(0)) {
+			 if (
+					 gc.getInput().isMousePressed(0)) {
+				 click.play();
 				 sbg.enterState(StatesCodes.GAMESTATE);
 			 }
 			 

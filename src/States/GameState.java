@@ -5,6 +5,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -13,6 +14,7 @@ import org.newdawn.slick.tiled.TiledMap;
 import GameElements.Worker;
 
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 
 import core.Collision;
 import core.Engine;
@@ -50,6 +52,10 @@ public class GameState extends BasicGameState {
     SpriteSheet mark_s;
     
     private int direction;
+    
+    private Sound entrySound;
+    
+
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -79,6 +85,9 @@ public class GameState extends BasicGameState {
 	      mark = new Animation(mark_s,100);
 	      
 	      direction = 6;
+	      
+			entrySound = Resources.getSound("login");
+
 	      
 	}
 
@@ -203,7 +212,11 @@ public class GameState extends BasicGameState {
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.WORKERSTATE);
 				else
+				{
+					entrySound.play();
 					sbg.enterState(StatesCodes.LOGINSTATE);
+				}
+					
 			}
 				
 			System.out.println(interaction_id);
@@ -213,14 +226,20 @@ public class GameState extends BasicGameState {
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.WORKERSTATE);
 				else
+				{
+					entrySound.play();
 					sbg.enterState(StatesCodes.LOGINSTATE);
+				}
 			}
 			else if(interaction_id==2)
 			{
 				if(Worker.id!=-1)
 					sbg.enterState(StatesCodes.NEWTASKSTATE);
 				else
+				{
+					entrySound.play();
 					sbg.enterState(StatesCodes.LOGINSTATE);
+				}
 			}
 				
 			//System.out.println(interaction_id);

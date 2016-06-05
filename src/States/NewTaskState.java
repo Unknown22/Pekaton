@@ -9,6 +9,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
@@ -38,14 +39,18 @@ public class NewTaskState extends BasicGameState {
 	int id=-1;
 	int takenTaskId[];
 	
+	 private Sound click;
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
-		font.addGlyphs("¹æ³óê¿Ÿñœ"); // szczególnie wa¿na jest ta linijka bo
+		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½"); // szczegï¿½lnie waï¿½na jest ta linijka bo
 		// to ona dodaje polskie znaki
 		font.addNeheGlyphs();
 		font.loadGlyphs();
+		click = Resources.getSound("click");
+
 		
 	}
 
@@ -61,7 +66,7 @@ public class NewTaskState extends BasicGameState {
 		
 		g.drawString("ID", margin+cellMargin, 150);
 		g.drawString("Stanowisko", margin+cellMargin+cellWidth, 150);
-		g.drawString("Doœwiadczenie", margin+cellMargin+cellWidth*2, 150);
+		g.drawString("Doï¿½wiadczenie", margin+cellMargin+cellWidth*2, 150);
 
 		
 		g.setColor(Color.darkGray);
@@ -70,7 +75,7 @@ public class NewTaskState extends BasicGameState {
 		g.drawString(Integer.toString(pracownik.getExp()), margin+cellMargin+cellWidth*2, 200);
 		
 		g.setColor(Color.blue);
-		g.drawString("Zadania do wziêcia: ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
+		g.drawString("Zadania do wziï¿½cia: ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
 		
 		
 		g.setColor(new Color(0x1E1B68));
@@ -90,7 +95,7 @@ public class NewTaskState extends BasicGameState {
 			g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 350);
 			
 			if(takenTaskId[i]==1)
-				g.drawString("Zadanie wziête", margin+cellMargin, 400);
+				g.drawString("Zadanie wziï¿½te", margin+cellMargin, 400);
 			else
 				g.drawImage(Resources.getSpritesheet("wezzadanie").getSubImage(0, 0, 120, 32), margin+cellMargin, 400 );
 			
@@ -111,7 +116,7 @@ public class NewTaskState extends BasicGameState {
 		}
 		else
 		{
-			g.drawString("Brak zadañ", margin+cellMargin, 300);
+			g.drawString("Brak zadaï¿½", margin+cellMargin, 300);
 		}
 		
 	}
@@ -156,8 +161,19 @@ public class NewTaskState extends BasicGameState {
 		
 		if ((xpos > 739 && xpos < 739+18) && (ypos > 40 && ypos < 40+20)) {
 
-			 if (gc.getInput().isMousePressed(0)) {
+			 if (
+					 
+					 gc.getInput().isMousePressed(0)) {
+				 click.play(); 
 				 sbg.enterState(StatesCodes.GAMESTATE);
+				 id=Worker.id;
+					pracownik=db.getPracownikByID(id);
+					zadania = (ArrayList<Zadanie>) db.getWolneZadania();
+					takenTaskId=new int[zadania.size()];
+					for(int j=0; j<zadania.size(); j++)
+					{
+						takenTaskId[j]=0;
+					}
 			 }
 		}
 		if ((xpos > 50 && xpos < 50+120) && (ypos > 400 && ypos < 400+34)) {
