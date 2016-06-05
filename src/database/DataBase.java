@@ -191,7 +191,7 @@ public class DataBase {
 		
 		try{
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM zadanie WHERE id_pracownika is null;");
+			ResultSet rs = statement.executeQuery("SELECT * FROM zadanie WHERE id_pracownika = 0;");
 			
 			while (rs.next()) {
 				Zadanie zadanie = new Zadanie(rs.getInt("id"),
