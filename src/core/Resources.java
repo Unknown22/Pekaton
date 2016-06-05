@@ -41,6 +41,7 @@ public class Resources {
 			spritesheets.put("monitor_login", new SpriteSheet(loadImage("data/img/monitor_login.png"), Window.width, Window.height));
 			spritesheets.put("doweryfikacji", new SpriteSheet(loadImage("data/img/doweryfikacji.png"), 120, 34));
 			spritesheets.put("popraw", new SpriteSheet(loadImage("data/img/popraw.png"), 120, 34));
+			spritesheets.put("wezzadanie", new SpriteSheet(loadImage("data/img/wezzadanie.png"), 120, 34));
 
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
