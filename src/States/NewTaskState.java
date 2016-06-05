@@ -158,6 +158,14 @@ public class NewTaskState extends BasicGameState {
 
 			 if (gc.getInput().isMousePressed(0)) {
 				 sbg.enterState(StatesCodes.GAMESTATE);
+				 id=Worker.id;
+					pracownik=db.getPracownikByID(id);
+					zadania = (ArrayList<Zadanie>) db.getWolneZadania();
+					takenTaskId=new int[zadania.size()];
+					for(int j=0; j<zadania.size(); j++)
+					{
+						takenTaskId[j]=0;
+					}
 			 }
 		}
 		if ((xpos > 50 && xpos < 50+120) && (ypos > 400 && ypos < 400+34)) {
