@@ -1,7 +1,7 @@
 package States;
 
 import java.util.ArrayList;
-
+import java.util.List;
 import java.awt.Font;
 
 import org.newdawn.slick.Color;
@@ -21,6 +21,7 @@ import GameElements.Worker;
 import core.Resources;
 import core.Window;
 import model.Pracownik;
+import model.Sprint;
 import model.Zadanie;
 import database.DataBase;
 
@@ -32,6 +33,7 @@ public class WorkerStatState extends BasicGameState {
 	int cellMargin=10;
 	Pracownik pracownik;
 	ArrayList<Zadanie> zadania;
+	List<Sprint> sprinty=db.getAllSprints();
 	int cellWidth=(Window.width-margin*2)/3;
 	int cellWidth2=(Window.width-margin*2)/4;
 	UnicodeFont font = new UnicodeFont(new Font("Minecraftia", Font.PLAIN, 20));
@@ -80,7 +82,14 @@ public class WorkerStatState extends BasicGameState {
 		g.setColor(new Color(0x1E1B68));
 		if(zadania.isEmpty()==false)
 		{
-			g.drawString(zadania.get(i).getOpis(), margin+cellMargin, 300);
+			String opisTemp=zadania.get(i).getOpis();
+			if(opisTemp.length()>46)
+			{
+				g.drawString(opisTemp.substring(0, 46), margin+cellMargin, 300);
+				g.drawString(opisTemp.substring(46, opisTemp.length()), margin+cellMargin, 325);
+			}
+			else
+				g.drawString(zadania.get(i).getOpis(), margin+cellMargin, 300);
 			g.setColor(Color.darkGray);
 			g.drawString(Integer.toString(zadania.get(i).getDoswiadczenie()), margin+cellMargin, 275);
 			g.drawString(zadania.get(i).getZleceniodawca(), margin+cellMargin, 350);
@@ -104,6 +113,21 @@ public class WorkerStatState extends BasicGameState {
 				g.drawString("Wykonane", margin+cellMargin, 375);
 				statusActualTask=2;
 			}
+			
+			if(zadania.get(i).getIdSprintu()>0)
+			{
+				String pocz=sprinty.get(zadania.get(i).getIdSprintu()-1).getPoczatek();
+				String koniec=sprinty.get(zadania.get(i).getIdSprintu()-1).getKoniec();
+				
+				g.setColor(Color.blue);
+				g.drawString("Data rozpoczecia sprintu:", margin+cellMargin, 450);
+				g.setColor(Color.darkGray);
+				g.drawString(pocz, margin+cellMargin+400, 450);
+				g.setColor(Color.blue);
+				g.drawString("Data zakonczenia sprintu:", margin+cellMargin, 475);
+				g.setColor(Color.darkGray);
+				g.drawString(koniec, margin+cellMargin+400, 475);
+			}
 		}
 		else
 		{
@@ -123,7 +147,6 @@ public class WorkerStatState extends BasicGameState {
 		if(Worker.id>=0 && id!=Worker.id)
 		{
 			id=Worker.id;
-			System.out.println("Id:"+id);
 			pracownik=db.getPracownikByID(id);
 			zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
 		}

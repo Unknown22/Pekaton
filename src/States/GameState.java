@@ -106,7 +106,7 @@ public class GameState extends BasicGameState {
 					sbg.enterState(StatesCodes.LOGINSTATE);
 			}
 				
-			System.out.println(interaction_id);
+			//System.out.println(interaction_id);
 		}
 
 		}
