@@ -26,6 +26,7 @@ import model.Zadanie;
 import database.DataBase;
 
 
+
 public class WorkerStatState extends BasicGameState {
 
 	DataBase db = new DataBase();
@@ -33,14 +34,18 @@ public class WorkerStatState extends BasicGameState {
 	int cellMargin=10;
 	Pracownik pracownik;
 	ArrayList<Zadanie> zadania;
+
 	List<Sprint> sprinty=db.getAllSprints();
+
 	int cellWidth=(Window.width-margin*2)/3;
 	int cellWidth2=(Window.width-margin*2)/4;
 	UnicodeFont font = new UnicodeFont(new Font("Minecraftia", Font.PLAIN, 20));
+
 	int i=0; //nr zadania
 	int id=-1;
 	
 	int statusActualTask=0;
+
 	
 	
 	
@@ -49,7 +54,7 @@ public class WorkerStatState extends BasicGameState {
 		// TODO Auto-generated method stub
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
 		font.addGlyphs("¹æ³óê¿Ÿñœ"); // szczególnie wa¿na jest ta linijka bo
-		// to ona dodaje polskie znaki
+										// to ona dodaje polskie znaki 
 		font.addNeheGlyphs();
 		font.loadGlyphs();
 		
@@ -76,12 +81,15 @@ public class WorkerStatState extends BasicGameState {
 		g.drawString(Integer.toString(pracownik.getExp()), margin+cellMargin+cellWidth*2, 200);
 		
 		g.setColor(Color.blue);
+
 		g.drawString("Zadania ("+(i+1)+"/"+zadania.size()+")", Window.width/2-margin, 250);
+
 		
 		
 		g.setColor(new Color(0x1E1B68));
 		if(zadania.isEmpty()==false)
 		{
+
 			String opisTemp=zadania.get(i).getOpis();
 			if(opisTemp.length()>46)
 			{
@@ -127,11 +135,12 @@ public class WorkerStatState extends BasicGameState {
 				g.drawString("Data zakonczenia sprintu:", margin+cellMargin, 475);
 				g.setColor(Color.darkGray);
 				g.drawString(koniec, margin+cellMargin+400, 475);
+
 			}
 		}
 		else
 		{
-			g.drawString("Brak zadañ", margin+cellMargin, 300);
+			g.drawString("Brak zadaï¿½", margin+cellMargin, 300);
 		}
 		
 				
@@ -147,6 +156,7 @@ public class WorkerStatState extends BasicGameState {
 		if(Worker.id>=0 && id!=Worker.id)
 		{
 			id=Worker.id;
+
 			pracownik=db.getPracownikByID(id);
 			zadania = (ArrayList<Zadanie>) db.getZadaniaByPracownikId(id);
 		}
@@ -178,6 +188,7 @@ public class WorkerStatState extends BasicGameState {
 			 if (gc.getInput().isMousePressed(0)) {
 				 sbg.enterState(StatesCodes.GAMESTATE);
 			 }
+
 		}
 		if ((xpos > 400 && xpos < 400+120) && (ypos > 375 && ypos < 375+34)) {
 
@@ -194,6 +205,7 @@ public class WorkerStatState extends BasicGameState {
 				 }
 			 }
 		}
+
 	}
 
 	@Override
