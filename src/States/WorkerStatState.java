@@ -53,8 +53,8 @@ public class WorkerStatState extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
-		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½"); // szczegï¿½lnie waï¿½na jest ta linijka bo
-		// to ona dodaje polskie znaki
+		font.addGlyphs("¹æ³óê¿Ÿñœ"); // szczególnie wa¿na jest ta linijka bo
+										// to ona dodaje polskie znaki 
 		font.addNeheGlyphs();
 		font.loadGlyphs();
 		
@@ -72,7 +72,7 @@ public class WorkerStatState extends BasicGameState {
 		
 		g.drawString("ID", margin+cellMargin, 150);
 		g.drawString("Stanowisko", margin+cellMargin+cellWidth, 150);
-		g.drawString("Doï¿½wiadczenie", margin+cellMargin+cellWidth*2, 150);
+		g.drawString("Doœwiadczenie", margin+cellMargin+cellWidth*2, 150);
 
 		
 		g.setColor(Color.darkGray);
