@@ -126,6 +126,32 @@ public class DataBase {
 		return sprinty;
 	}
 	
+
+	public List<Zadanie> getAllZadanieBySprintId(int id_sprint){
+		List<Zadanie> zadania = new ArrayList<Zadanie>();
+		
+		try{
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM zadanie WHERE id_sprint ="+id_sprint+";");
+			
+			while (rs.next()) {
+				Zadanie zadanie = new Zadanie(rs.getInt("id"),
+												rs.getString("opis"),
+												rs.getInt("doswiadczenie"),
+												rs.getString("zleceniodawca"),
+												rs.getInt("id_pracownika"),
+												rs.getInt("status"),
+												rs.getInt("id_sprint"));
+				zadania.add(zadanie);
+			}
+			
+		} catch (SQLException e){
+			System.out.println("Blad przy pobieraniu listy zadan");
+		}
+		
+		return zadania;
+	}
+
 	public void updatePracownikExpByZadanie(int id_pracownika, int id_zadania){
 		int exp_zadanie = 0;
 		int obecny_exp_pracownika = -1;
@@ -158,7 +184,6 @@ public class DataBase {
 		} catch(SQLException e){
 			System.out.println("Blad przy aktualizacji expa pracownika");
 		}
-		
 		
 	}
 
