@@ -37,7 +37,7 @@ public class DBExample {
 		System.out.println(sprinty.get(0).getKoniec());
 		
 		db.setZadanieStatusById(13, 1);
-		
+
 		zadania = db.getAllZadanieBySprintId(1);
 		
 		for (int x = 0; x < zadania.size(); x++){
@@ -45,6 +45,9 @@ public class DBExample {
 			System.out.println(zadania.get(0).getOpis());
 		}
 		
+
+		db.updatePracownikExpByZadanie(2, 3);
+
 		
 	}
 
