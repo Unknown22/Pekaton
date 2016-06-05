@@ -64,7 +64,7 @@ CREATE TABLE `pracownik` (
 
 LOCK TABLES `pracownik` WRITE;
 /*!40000 ALTER TABLE `pracownik` DISABLE KEYS */;
-INSERT INTO `pracownik` VALUES (12,'Marcin Migda','pass1','Management Engineer',0,'2016-06-05 04:43:45'),(13,'Mateusz Skocz','pass1','Administrator',0,'2016-06-05 04:44:45'),(14,'Dominik Nowak','pass1','Backend Developer',0,'2016-06-05 04:45:05'),(16,'Krzysztof Peziol','pass1','Graphic - Developer',0,'2016-06-05 05:22:34');
+INSERT INTO `pracownik` VALUES (12,'Marcin Migda','pass1','Engineer',0,'2016-06-05 05:45:48'),(13,'Mateusz Skocz','pass1','Administrator',0,'2016-06-05 04:44:45'),(14,'Dominik Nowak','pass1','Developer',0,'2016-06-05 05:45:48'),(16,'Krzysztof Peziol','pass1','Graphic',0,'2016-06-05 05:45:48');
 /*!40000 ALTER TABLE `pracownik` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +109,7 @@ CREATE TABLE `zadanie` (
   `status` int(11) NOT NULL,
   `id_sprint` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE `zadanie` (
 
 LOCK TABLES `zadanie` WRITE;
 /*!40000 ALTER TABLE `zadanie` DISABLE KEYS */;
-INSERT INTO `zadanie` VALUES (28,'Ocenic projekty',20,'Politechnika',0,0,1),(29,'Zrobic grafike',10,'Marcin Migda',13,0,1),(30,'Zaprogramowac backend',12,'Marcin Migda',14,0,1),(31,'Testowe zadanie 1',2,'Dominik Nowak',12,0,1),(32,'Testowe zadanie 2',4,'Krzysztof Peziol',12,0,1),(33,'Testowe zadanie 3',7,'Mateusz Skocz',12,0,1),(34,'Testowe zadanie 4',9,'Politechnika',12,0,1),(35,'Testowe zadanie 5',3,'SII',0,0,1);
+INSERT INTO `zadanie` VALUES (28,'Ocenic projekty',20,'Politechnika',12,0,1),(29,'Zrobic grafike',10,'Marcin Migda',13,0,1),(30,'Zaprogramowac backend',12,'Marcin Migda',14,0,1),(31,'Testowe zadanie 1',2,'Dominik Nowak',12,0,1),(32,'Testowe zadanie 2',4,'Krzysztof Peziol',12,1,1),(33,'Testowe zadanie 3',7,'Mateusz Skocz',12,2,1),(34,'Testowe zadanie 4',9,'Politechnika',12,0,1),(35,'Testowe zadanie 5',3,'SII',0,0,1),(36,'Testowe zadanie 6',4,'',12,0,1);
 /*!40000 ALTER TABLE `zadanie` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -131,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-05  7:33:42
+-- Dump completed on 2016-06-05  7:46:09
