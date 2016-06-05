@@ -12,7 +12,10 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
-import org.newdawn.slick.gui.TextField;
+//import org.newdawn.slick.gui.TextField;
+
+import GameElements.TextField;
+
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -51,6 +54,8 @@ public class LoginState extends BasicGameState {
 			public void componentActivated(AbstractComponent source) {
 			}
 			});
+		password.setMaskEnabled(true);
+		password.setMaskCharacter('*');
 	}
 
 	@Override
