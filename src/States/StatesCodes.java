@@ -7,5 +7,6 @@ package States;
 		public static int WORKERSTATE = 1;
 		public static int LOGINSTATE = 2;
 		public static int NEWTASKSTATE = 3;
+		public static int CREDITSSTATE = 4;
 
 }
