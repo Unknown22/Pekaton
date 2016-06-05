@@ -12,7 +12,6 @@ import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import core.Window;
 
 public class CreditsState extends BasicGameState{
 
@@ -27,10 +26,8 @@ public class CreditsState extends BasicGameState{
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
-		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½");
+		font.addGlyphs("¹æ³óê¿Ÿñœ");
 		font.getEffects().add(new ColorEffect(java.awt.Color.white));
-		font.addGlyphs("ï¿½ï¿½ï¿½ê¿Ÿï¿½"); // szczegï¿½lnie waï¿½na jest ta linijka bo
-										// to ona dodaje polskie znaki
 		font.addNeheGlyphs();
 		font.loadGlyphs();
 	}

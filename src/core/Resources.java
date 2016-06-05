@@ -1,6 +1,5 @@
 package core;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,10 +7,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.openal.Audio;
-import org.newdawn.slick.openal.AudioLoader;
 import org.newdawn.slick.tiled.TiledMap;
-import org.newdawn.slick.util.ResourceLoader;
 import org.newdawn.slick.Sound;
 
 
