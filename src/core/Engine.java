@@ -45,6 +45,8 @@ public class Engine extends StateBasedGame{
 		ClassesInstances.loginState=new States.LoginState();
 
 		ClassesInstances.newTaskState=new States.NewTaskState();
+		ClassesInstances.creditsState=new States.CreditsState();
+
 
 
 			
@@ -52,6 +54,9 @@ public class Engine extends StateBasedGame{
 		this.addState(ClassesInstances.workerStatState);
 		this.addState(ClassesInstances.loginState);
 		this.addState(ClassesInstances.newTaskState);
+		this.addState(ClassesInstances.creditsState);
+
+		
 
 		
 		
